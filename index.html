@@ -6,19 +6,23 @@
   <title>Báo cáo kinh doanh MH045_KBAN | 01–04/08/2026</title>
   <style>
     :root {
-      --gold: #b8860b;
-      --gold-light: #f5e6b8;
-      --gold-dark: #8b6914;
-      --bg: #faf8f5;
+      --gray: #E6E5E0;
+      --beige: #D0C09E;
+      --gold-muted: #DBBB5F;
+      --gold: #DFB011;
+      --black: #000000;
+      --bg: #E6E5E0;
       --surface: #ffffff;
-      --text: #1a1a1a;
-      --text-muted: #5c5c5c;
-      --border: #e8e0d4;
-      --accent: #1e3a5f;
-      --success: #2d6a4f;
-      --warning: #b45309;
-      --danger: #b91c1c;
-      --shadow: 0 1px 3px rgba(0,0,0,.08);
+      --text: #000000;
+      --text-muted: #3d3a34;
+      --border: #D0C09E;
+      --accent: #000000;
+      --gold-light: #DBBB5F;
+      --gold-dark: #b8940d;
+      --success: #5a4a1a;
+      --warning: #DFB011;
+      --danger: #6b2020;
+      --shadow: 0 1px 3px rgba(0,0,0,.1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,10 +36,11 @@
     }
 
     .header {
-      background: linear-gradient(135deg, var(--accent) 0%, #2c5282 100%);
-      color: #fff;
+      background: var(--black);
+      color: var(--gray);
       padding: 2.5rem 2rem;
       text-align: center;
+      border-bottom: 4px solid var(--gold);
     }
 
     .header h1 {
@@ -43,10 +48,11 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
+      color: var(--gold);
     }
 
     .header .subtitle {
-      opacity: 0.9;
+      color: var(--beige);
       font-size: 1rem;
     }
 
@@ -54,7 +60,9 @@
       display: inline-block;
       margin-top: 1rem;
       padding: 0.35rem 1rem;
-      background: rgba(255,255,255,.15);
+      background: rgba(223,176,17,.15);
+      border: 1px solid var(--gold-muted);
+      color: var(--gold);
       border-radius: 999px;
       font-size: 0.85rem;
     }
@@ -93,10 +101,10 @@
     .kpi-card .value {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--black);
     }
 
-    .kpi-card .value.gold { color: var(--gold-dark); }
+    .kpi-card .value.gold { color: var(--gold); }
     .kpi-card .note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
 
     /* Sections */
@@ -114,7 +122,7 @@
       color: var(--accent);
       margin-bottom: 1rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--gold-light);
+      border-bottom: 2px solid var(--beige);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -137,7 +145,7 @@
     p { margin-bottom: 0.75rem; color: var(--text-muted); }
 
     .highlight-box {
-      background: var(--gold-light);
+      background: var(--beige);
       border-left: 4px solid var(--gold);
       padding: 1rem 1.25rem;
       border-radius: 0 8px 8px 0;
@@ -162,16 +170,16 @@
     }
 
     th {
-      background: #f3f0ea;
+      background: var(--beige);
       font-weight: 600;
-      color: var(--accent);
+      color: var(--black);
       white-space: nowrap;
     }
 
     td.num { text-align: right; font-variant-numeric: tabular-nums; }
     th.num { text-align: right; }
 
-    tr:hover td { background: #faf8f5; }
+    tr:hover td { background: var(--gray); }
 
     .tag {
       display: inline-block;
@@ -181,9 +189,9 @@
       font-weight: 600;
     }
 
-    .tag-top { background: #d1fae5; color: var(--success); }
-    .tag-mid { background: #fef3c7; color: var(--warning); }
-    .tag-low { background: #fee2e2; color: var(--danger); }
+    .tag-top { background: var(--gold); color: var(--black); }
+    .tag-mid { background: var(--gold-muted); color: var(--black); }
+    .tag-low { background: var(--gray); color: var(--text-muted); border: 1px solid var(--beige); }
 
     /* Bar chart (CSS) */
     .bar-chart { margin: 1rem 0; }
@@ -206,20 +214,21 @@
     .bar-track {
       flex: 1;
       height: 22px;
-      background: #f0ebe3;
+      background: var(--gray);
+      border: 1px solid var(--beige);
       border-radius: 4px;
       overflow: hidden;
     }
 
     .bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      background: linear-gradient(90deg, var(--gold-muted), var(--gold));
       border-radius: 4px;
       min-width: 2px;
       transition: width 0.6s ease;
     }
 
-    .bar-fill.blue { background: linear-gradient(90deg, #3b82f6, var(--accent)); }
+    .bar-fill.alt { background: linear-gradient(90deg, var(--beige), var(--gold-muted)); }
     .bar-value {
       width: 80px;
       font-size: 0.85rem;
@@ -240,12 +249,12 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1rem;
-      background: #faf8f5;
+      background: var(--gray);
     }
 
     .staff-card .name {
       font-weight: 700;
-      color: var(--accent);
+      color: var(--black);
       margin-bottom: 0.5rem;
       font-size: 1rem;
     }
@@ -260,7 +269,7 @@
     .staff-card .stats span { color: var(--text-muted); }
     .staff-card .stats strong { color: var(--text); }
 
-    .staff-card.rank-1 { border-color: var(--gold); background: #fffdf5; }
+    .staff-card.rank-1 { border-color: var(--gold); background: #fff; border-width: 2px; }
 
     /* Two columns */
     .grid-2 {
@@ -281,14 +290,14 @@
       padding: 0.75rem 1rem;
       margin-bottom: 0.5rem;
       border-radius: 6px;
-      border-left: 4px solid var(--border);
-      background: #faf8f5;
+      border-left: 4px solid var(--beige);
+      background: var(--gray);
       font-size: 0.9rem;
     }
 
-    .rec-list li.priority-high { border-left-color: var(--danger); }
-    .rec-list li.priority-mid { border-left-color: var(--warning); }
-    .rec-list li.priority-low { border-left-color: var(--success); }
+    .rec-list li.priority-high { border-left-color: var(--black); }
+    .rec-list li.priority-mid { border-left-color: var(--gold); }
+    .rec-list li.priority-low { border-left-color: var(--gold-muted); }
 
     .rec-list .priority-tag {
       font-size: 0.7rem;
@@ -300,9 +309,10 @@
     .footer {
       text-align: center;
       padding: 2rem;
-      color: var(--text-muted);
+      color: var(--beige);
+      background: var(--black);
       font-size: 0.85rem;
-      border-top: 1px solid var(--border);
+      border-top: 4px solid var(--gold);
       margin-top: 2rem;
     }
 
@@ -314,8 +324,8 @@
     }
 
     .bill-chip {
-      background: #f3f0ea;
-      border: 1px solid var(--border);
+      background: var(--gray);
+      border: 1px solid var(--beige);
       border-radius: 6px;
       padding: 0.5rem 0.75rem;
       font-size: 0.85rem;
@@ -324,7 +334,7 @@
       min-width: 100px;
     }
 
-    .bill-chip strong { display: block; font-size: 1.1rem; color: var(--accent); }
+    .bill-chip strong { display: block; font-size: 1.1rem; color: var(--gold); }
   </style>
 </head>
 <body>
@@ -570,7 +580,7 @@
               <tbody>
                 <tr><td>Tổng lượt khách</td><td class="num"><strong>596</strong></td></tr>
                 <tr><td>Số đơn hàng</td><td class="num"><strong>184</strong></td></tr>
-                <tr><td>Tỷ lệ chuyển đổi</td><td class="num"><strong style="color:var(--success)">30,87%</strong></td></tr>
+                <tr><td>Tỷ lệ chuyển đổi</td><td class="num"><strong style="color:var(--gold)">30,87%</strong></td></tr>
                 <tr><td>Doanh thu / lượt khách</td><td class="num">2.501.612 đ</td></tr>
                 <tr><td>Đơn / KH unique</td><td class="num">1,13 đơn/KH</td></tr>
                 <tr><td>KH mua 2+ lần</td><td class="num">17 (10,4%)</td></tr>
@@ -584,22 +594,22 @@
           <div class="bar-chart">
             <div class="bar-row">
               <span class="bar-label">01/08 (T7)</span>
-              <div class="bar-track"><div class="bar-fill blue" style="width:90%"></div></div>
+              <div class="bar-track"><div class="bar-fill alt" style="width:90%"></div></div>
               <span class="bar-value">~45%</span>
             </div>
             <div class="bar-row">
               <span class="bar-label">02/08 (CN)</span>
-              <div class="bar-track"><div class="bar-fill blue" style="width:80%"></div></div>
+              <div class="bar-track"><div class="bar-fill alt" style="width:80%"></div></div>
               <span class="bar-value">~40%</span>
             </div>
             <div class="bar-row">
               <span class="bar-label">04/08 (T3)</span>
-              <div class="bar-track"><div class="bar-fill blue" style="width:42%"></div></div>
+              <div class="bar-track"><div class="bar-fill alt" style="width:42%"></div></div>
               <span class="bar-value">~21%</span>
             </div>
             <div class="bar-row">
               <span class="bar-label">03/08 (T2)</span>
-              <div class="bar-track"><div class="bar-fill blue" style="width:34%"></div></div>
+              <div class="bar-track"><div class="bar-fill alt" style="width:34%"></div></div>
               <span class="bar-value">~17%</span>
             </div>
           </div>
@@ -787,7 +797,7 @@
               <td class="num">7,2 tr</td>
               <td class="num">1,3</td>
               <td class="num"><strong>21,3 tr</strong></td>
-              <td class="num"><strong style="color:var(--success)">11,77%</strong></td>
+              <td class="num"><strong style="color:var(--gold)">11,77%</strong></td>
             </tr>
             <tr>
               <td>Đặng Thị Thu Quanh</td>
@@ -837,7 +847,7 @@
           <div class="name">Phạm Thị Minh Hiếu</div>
           <div class="stats">
             <div><span>Tỷ số DT:</span> <strong>0,73x</strong></div>
-            <div><span>Margin:</span> <strong style="color:var(--success)">11,77%</strong></div>
+            <div><span>Margin:</span> <strong style="color:var(--gold)">11,77%</strong></div>
             <div colspan="2" style="grid-column:1/-1;margin-top:0.25rem;font-size:0.8rem;color:var(--text-muted)">Margin cao nhất — bán hàng lợi nhuận</div>
           </div>
         </div>
@@ -859,21 +869,21 @@
         <div>
           <h3>Điểm mạnh</h3>
           <ul class="rec-list">
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">+</span> CR 30,87% — tốt cho ngành vàng</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">+</span> DT ~1,49 tỷ / 4 ngày (~373 tr/ngày)</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">+</span> Vàng tích lũy KGB là động lực chính (65% DT)</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">+</span> Ý Nhi & Phước dẫn đầu doanh thu</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">+</span> Minh Hiếu margin 11,77% — hiệu quả LN cao nhất</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> CR 30,87% — tốt cho ngành vàng</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> DT ~1,49 tỷ / 4 ngày (~373 tr/ngày)</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Vàng tích lũy KGB là động lực chính (65% DT)</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Ý Nhi & Phước dẫn đầu doanh thu</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Minh Hiếu margin 11,77% — hiệu quả LN cao nhất</li>
           </ul>
         </div>
         <div>
           <h3>Hành động ưu tiên</h3>
           <ul class="rec-list">
-            <li class="priority-high"><span class="priority-tag" style="color:var(--danger)">Cao</span> Đẩy mạnh KGB + combo upsell (từ đơn 1–3 tr lên 5–10 tr)</li>
-            <li class="priority-high"><span class="priority-tag" style="color:var(--danger)">Cao</span> Phân tích nguyên nhân sụt 03/08, lập kế hoạch T2–T4</li>
-            <li class="priority-mid"><span class="priority-tag" style="color:var(--warning)">TB</span> Chia sẻ kỹ năng bán của Minh Hiếu cho team</li>
-            <li class="priority-mid"><span class="priority-tag" style="color:var(--warning)">TB</span> Hỗ trợ Cẩm Tú, Thu Quanh về tư vấn & chốt đơn lớn</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--success)">Thấp</span> Điều chỉnh bạc tích lũy nếu tiếp tục LN âm</li>
+            <li class="priority-high"><span class="priority-tag" style="color:var(--black)">Cao</span> Đẩy mạnh KGB + combo upsell (từ đơn 1–3 tr lên 5–10 tr)</li>
+            <li class="priority-high"><span class="priority-tag" style="color:var(--black)">Cao</span> Phân tích nguyên nhân sụt 03/08, lập kế hoạch T2–T4</li>
+            <li class="priority-mid"><span class="priority-tag" style="color:var(--gold)">TB</span> Chia sẻ kỹ năng bán của Minh Hiếu cho team</li>
+            <li class="priority-mid"><span class="priority-tag" style="color:var(--gold)">TB</span> Hỗ trợ Cẩm Tú, Thu Quanh về tư vấn & chốt đơn lớn</li>
+            <li class="priority-low"><span class="priority-tag" style="color:var(--gold-muted)">Thấp</span> Điều chỉnh bạc tích lũy nếu tiếp tục LN âm</li>
           </ul>
         </div>
       </div>
