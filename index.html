@@ -3,897 +3,1897 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Báo cáo kinh doanh MH045_KBAN | 01–04/08/2026</title>
+  <title>Báo cáo kinh doanh MH045 | 01–27/08/2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root {
-      --gray: #E6E5E0;
-      --beige: #D0C09E;
-      --gold-muted: #DBBB5F;
-      --gold: #DFB011;
-      --black: #000000;
-      --bg: #E6E5E0;
-      --surface: #ffffff;
-      --text: #000000;
-      --text-muted: #3d3a34;
-      --border: #D0C09E;
-      --accent: #000000;
-      --gold-light: #DBBB5F;
-      --gold-dark: #b8940d;
-      --success: #5a4a1a;
-      --warning: #DFB011;
-      --danger: #6b2020;
-      --shadow: 0 1px 3px rgba(0,0,0,.1);
+      --cream: #FEF2A0;
+      --peach: #F3CD97;
+      --orange: #E98B50;
+      --brick: #BC4F4F;
+      --ink: #3A1F1F;
+      --ink-soft: #6B3E3E;
+      --surface: #FFFCF0;
+      --white: #FFFFFF;
+      --line: rgba(188, 79, 79, 0.18);
+      --shadow: 0 10px 30px rgba(188, 79, 79, 0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 15px;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(254, 242, 160, 0.95), transparent 42%),
+        radial-gradient(circle at 88% 0%, rgba(243, 205, 151, 0.7), transparent 35%),
+        linear-gradient(180deg, #FFF8DC 0%, #FEF2A0 45%, #F8E4B8 100%);
+      min-height: 100vh;
+      line-height: 1.55;
     }
 
-    .header {
-      background: var(--black);
-      color: var(--gray);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      border-bottom: 4px solid var(--gold);
-    }
-
-    .header h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      color: var(--gold);
-    }
-
-    .header .subtitle {
-      color: var(--beige);
-      font-size: 1rem;
-    }
-
-    .header .badge {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.35rem 1rem;
-      background: rgba(223,176,17,.15);
-      border: 1px solid var(--gold-muted);
-      color: var(--gold);
-      border-radius: 999px;
-      font-size: 0.85rem;
-    }
-
-    .container {
-      max-width: 1100px;
+    .wrap {
+      max-width: 1920px;
+      width: 100%;
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      padding: 1.5rem 2rem 3.5rem;
     }
 
-    /* KPI cards */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .kpi-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem;
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 2.75rem 2.25rem;
+      background:
+        linear-gradient(135deg, var(--brick) 0%, #D4654A 48%, var(--orange) 100%);
+      color: var(--cream);
       box-shadow: var(--shadow);
-      border-top: 3px solid var(--gold);
+      margin-bottom: 1.75rem;
     }
 
-    .kpi-card .label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(254, 242, 160, 0.16);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.35rem;
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
     }
 
-    .kpi-card .value {
-      font-size: 1.5rem;
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 700;
-      color: var(--black);
+      line-height: 1.15;
+      max-width: none;
+      margin-bottom: 0.75rem;
     }
 
-    .kpi-card .value.gold { color: var(--gold); }
-    .kpi-card .note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .hero p {
+      font-size: 1rem;
+      max-width: 70ch;
+      opacity: 0.95;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.4rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(254, 242, 160, 0.18);
+      border: 1px solid rgba(254, 242, 160, 0.35);
+      font-size: 0.82rem;
+    }
 
     /* Sections */
     section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.75rem;
       margin-bottom: 1.5rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-head h2 {
+      font-size: 1.35rem;
+      color: var(--brick);
+    }
+
+    .section-head span {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    /* KPI */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+    }
+
+    .kpi {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.1rem 1.15rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--orange);
+    }
+
+    .kpi:nth-child(2)::before { background: var(--brick); }
+    .kpi:nth-child(3)::before { background: #D4A017; }
+    .kpi:nth-child(4)::before { background: var(--peach); }
+
+    .kpi .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .kpi .value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .kpi .sub {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 0.25rem;
+    }
+
+    .kpi .sub.up { color: #2F6B3A; }
+    .kpi .sub.down { color: var(--brick); }
+
+    /* Cards / panels */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1.25rem 1.3rem;
       box-shadow: var(--shadow);
     }
 
-    section h2 {
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--beige);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .panel h3 {
+      font-size: 1.05rem;
+      color: var(--brick);
+      margin-bottom: 0.85rem;
     }
 
-    section h2::before {
-      content: "";
-      width: 4px;
-      height: 1.2rem;
-      background: var(--gold);
-      border-radius: 2px;
+    .panel .note {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-top: 0.75rem;
     }
 
-    h3 {
-      font-size: 1rem;
-      color: var(--text);
-      margin: 1.25rem 0 0.75rem;
+    .chart-box {
+      position: relative;
+      height: 280px;
     }
 
-    p { margin-bottom: 0.75rem; color: var(--text-muted); }
+    .chart-box.tall { height: 320px; }
 
-    .highlight-box {
-      background: var(--beige);
-      border-left: 4px solid var(--gold);
-      padding: 1rem 1.25rem;
-      border-radius: 0 8px 8px 0;
-      margin: 1rem 0;
+    /* Insight callouts */
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .insight {
+      background: linear-gradient(180deg, var(--cream), var(--peach));
+      border-radius: 16px;
+      padding: 1.1rem 1.15rem;
+      border: 1px solid rgba(233, 139, 80, 0.25);
+    }
+
+    .insight strong {
+      display: block;
       font-size: 0.95rem;
-      color: var(--text);
+      color: var(--brick);
+      margin-bottom: 0.35rem;
+    }
+
+    .insight p {
+      font-size: 0.86rem;
+      color: var(--ink);
     }
 
     /* Tables */
-    .table-wrap { overflow-x: auto; margin: 1rem 0; }
+    .table-wrap { overflow-x: auto; }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-
-    th, td {
-      padding: 0.65rem 0.85rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
     }
 
     th {
-      background: var(--beige);
-      font-weight: 600;
-      color: var(--black);
+      text-align: left;
+      padding: 0.65rem 0.5rem;
+      border-bottom: 2px solid var(--orange);
+      color: var(--brick);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       white-space: nowrap;
     }
 
-    td.num { text-align: right; font-variant-numeric: tabular-nums; }
-    th.num { text-align: right; }
+    td {
+      padding: 0.7rem 0.5rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+    }
 
-    tr:hover td { background: var(--gray); }
+    tr:last-child td { border-bottom: none; }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .muted { color: var(--ink-soft); }
+
+    .bar-cell {
+      min-width: 110px;
+    }
+
+    .bar {
+      height: 8px;
+      background: rgba(243, 205, 151, 0.55);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--brick));
+      border-radius: 999px;
+    }
 
     .tag {
       display: inline-block;
       padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
       font-weight: 600;
     }
 
-    .tag-top { background: var(--gold); color: var(--black); }
-    .tag-mid { background: var(--gold-muted); color: var(--black); }
-    .tag-low { background: var(--gray); color: var(--text-muted); border: 1px solid var(--beige); }
+    .tag.good { background: #E6F4EA; color: #1F6B35; }
+    .tag.warn { background: #FFF1D6; color: #9A5B00; }
+    .tag.bad { background: #FCE8E8; color: #9B2C2C; }
 
-    /* Bar chart (CSS) */
-    .bar-chart { margin: 1rem 0; }
-
-    .bar-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .bar-label {
-      width: 140px;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      text-align: right;
-      color: var(--text-muted);
-    }
-
-    .bar-track {
-      flex: 1;
-      height: 22px;
-      background: var(--gray);
-      border: 1px solid var(--beige);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold-muted), var(--gold));
-      border-radius: 4px;
-      min-width: 2px;
-      transition: width 0.6s ease;
-    }
-
-    .bar-fill.alt { background: linear-gradient(90deg, var(--beige), var(--gold-muted)); }
-    .bar-value {
-      width: 80px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      text-align: right;
-    }
-
-    /* Staff cards */
     .staff-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-      margin-top: 1rem;
     }
 
-    .staff-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      background: var(--gray);
+    .staff-card h3 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.35rem 0.75rem;
+      margin-bottom: 0.35rem;
     }
 
-    .staff-card .name {
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
+    .staff-card .staff-meta {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.85rem;
     }
 
-    .staff-card .stats {
+    .staff-card table th,
+    .staff-card table td {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.35rem;
+    }
+
+    .mini-kpis {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.35rem;
-      font-size: 0.85rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      margin-bottom: 0.85rem;
     }
 
-    .staff-card .stats span { color: var(--text-muted); }
-    .staff-card .stats strong { color: var(--text); }
-
-    .staff-card.rank-1 { border-color: var(--gold); background: #fff; border-width: 2px; }
-
-    /* Two columns */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+    .mini-kpi {
+      background: linear-gradient(180deg, var(--cream), var(--peach));
+      border-radius: 12px;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid rgba(233, 139, 80, 0.2);
     }
 
-    @media (max-width: 768px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .bar-label { width: 90px; font-size: 0.75rem; }
-    }
-
-    /* Recommendations */
-    .rec-list { list-style: none; }
-
-    .rec-list li {
-      padding: 0.75rem 1rem;
-      margin-bottom: 0.5rem;
-      border-radius: 6px;
-      border-left: 4px solid var(--beige);
-      background: var(--gray);
-      font-size: 0.9rem;
-    }
-
-    .rec-list li.priority-high { border-left-color: var(--black); }
-    .rec-list li.priority-mid { border-left-color: var(--gold); }
-    .rec-list li.priority-low { border-left-color: var(--gold-muted); }
-
-    .rec-list .priority-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
+    .mini-kpi .l {
+      font-size: 0.68rem;
       text-transform: uppercase;
-      margin-right: 0.5rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
     }
+
+    .mini-kpi .v {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 0.15rem;
+    }
+
+    /* Progress ring row */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .progress-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.35rem 0.75rem;
+      align-items: center;
+      font-size: 0.86rem;
+    }
+
+    .progress-row .name { font-weight: 600; color: var(--ink); }
+    .progress-row .pct { color: var(--brick); font-weight: 700; }
+    .progress-row .track {
+      grid-column: 1 / -1;
+      height: 10px;
+      background: rgba(243, 205, 151, 0.5);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-row .track > i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--peach), var(--orange), var(--brick));
+      border-radius: 999px;
+    }
+
+    /* Narrative */
+    .narrative {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .narrative h3 {
+      color: var(--brick);
+      margin-bottom: 0.7rem;
+    }
+
+    .narrative ul {
+      padding-left: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.92rem;
+    }
+
+    .narrative li::marker { color: var(--orange); }
 
     .footer {
       text-align: center;
-      padding: 2rem;
-      color: var(--beige);
-      background: var(--black);
-      font-size: 0.85rem;
-      border-top: 4px solid var(--gold);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
       margin-top: 2rem;
     }
 
-    .bill-dist {
+    @media (max-width: 1200px) {
+      .staff-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 960px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .grid-3, .insights { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
+      .mini-kpis { grid-template-columns: 1fr; }
+      .wrap { padding: 1.25rem 1rem 3rem; }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .hero { padding: 2rem 1.35rem; }
+      .wrap { padding: 1rem 0.75rem 2.5rem; }
+    }
+
+    .daily-table table { font-size: 0.82rem; }
+    .daily-table td { vertical-align: top; }
+    .bullet-list {
+      padding-left: 1.15rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.92rem;
     }
-
-    .bill-chip {
-      background: var(--gray);
-      border: 1px solid var(--beige);
-      border-radius: 6px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.85rem;
-      text-align: center;
-      flex: 1;
-      min-width: 100px;
-    }
-
-    .bill-chip strong { display: block; font-size: 1.1rem; color: var(--gold); }
+    .bullet-list li::marker { color: var(--orange); }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-eyebrow">Báo cáo hiệu suất bán lẻ · MH045_KBAN</div>
+      <h1>Báo cáo kinh doanh tháng 8/2026</h1>
+      <p>
+        Phân tích doanh thu, chuyển đổi, ngành hàng và hiệu suất tư vấn viên
+        giai kỳ <strong>01–27/08/2026</strong> (27 ngày), đối chiếu mục tiêu MH35.
+      </p>
+      <div class="hero-meta">
+        <span class="chip">1.568 lượt khách</span>
+        <span class="chip">485 hóa đơn</span>
+        <span class="chip">Doanh thu 7,60 tỷ</span>
+        <span class="chip">Mục tiêu tháng 20,29 tỷ</span>
+      </div>
+    </header>
 
-  <header class="header">
-    <h1>Báo cáo kinh doanh cửa hàng MH045_KBAN</h1>
-    <p class="subtitle">Phân tích doanh thu, chuyển đổi & hiệu suất bán hàng</p>
-    <span class="badge">01/08/2026 – 04/08/2026 · 4 ngày · Nguồn: data (5).xlsx</span>
-  </header>
-
-  <div class="container">
-
-    <!-- KPI Overview -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="label">Doanh thu thuần</div>
-        <div class="value gold">1,49 tỷ</div>
-        <div class="note">1.490.960.950 đ</div>
+    <!-- KPI -->
+    <section>
+      <div class="section-head">
+        <h2>Chỉ số tổng quan</h2>
+        <span>Nguồn: data (10).xlsx · Mục tiêu TVV MH35</span>
       </div>
-      <div class="kpi-card">
-        <div class="label">Lượt khách</div>
-        <div class="value">596</div>
-        <div class="note">Tổng 4 ngày</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Số đơn hàng</div>
-        <div class="value">184</div>
-        <div class="note">163 KH unique</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Tỷ lệ chuyển đổi</div>
-        <div class="value">30,87%</div>
-        <div class="note">~3/10 lượt khách mua</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">TB đơn hàng (AOV)</div>
-        <div class="value">8,1 tr</div>
-        <div class="note">Trung vị: 2,82 tr</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Lợi nhuận gộp</div>
-        <div class="value">44,1 tr</div>
-        <div class="note">Margin 2,96%</div>
-      </div>
-    </div>
-
-    <!-- Section 1: Revenue -->
-    <section id="doanh-thu">
-      <h2>Doanh thu & Cơ cấu ngành hàng</h2>
-      <p>Tổng thành tiền <strong>1.578.047.000 đ</strong>, sau điều chỉnh còn doanh thu thuần <strong>1.490.960.950 đ</strong> (chênh lệch 5,5%). Tổng trọng lượng vàng bán: <strong>144,44 chỉ</strong>.</p>
-
-      <h3>Cơ cấu theo danh mục sản phẩm</h3>
-      <div class="bar-chart">
-        <div class="bar-row">
-          <span class="bar-label">Vàng tích lũy</span>
-          <div class="bar-track"><div class="bar-fill" style="width:65.1%"></div></div>
-          <span class="bar-value">65,1%</span>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="label">Doanh thu (Thành tiền)</div>
+          <div class="value">7,60 tỷ</div>
+          <div class="sub">7.602.219.000đ · DTT 7,50 tỷ</div>
         </div>
-        <div class="bar-row">
-          <span class="bar-label">TS vàng ta</span>
-          <div class="bar-track"><div class="bar-fill" style="width:26.5%"></div></div>
-          <span class="bar-value">26,5%</span>
+        <div class="kpi">
+          <div class="label">Tỷ lệ chuyển đổi</div>
+          <div class="value">30,9%</div>
+          <div class="sub up">485 hóa đơn / 1.568 khách</div>
         </div>
-        <div class="bar-row">
-          <span class="bar-label">TS vàng tây</span>
-          <div class="bar-track"><div class="bar-fill" style="width:6.4%"></div></div>
-          <span class="bar-value">6,4%</span>
+        <div class="kpi">
+          <div class="label">Trung bình hóa đơn</div>
+          <div class="value">15,7 triệu</div>
+          <div class="sub">Trung vị 6,56 triệu · TB 2,59 SP/hóa đơn</div>
         </div>
-        <div class="bar-row">
-          <span class="bar-label">BST</span>
-          <div class="bar-track"><div class="bar-fill" style="width:1.1%"></div></div>
-          <span class="bar-value">1,1%</span>
+        <div class="kpi">
+          <div class="label">Lợi nhuận gộp</div>
+          <div class="value">426,3 triệu</div>
+          <div class="sub">Biên LN 5,68% trên DTT</div>
         </div>
-        <div class="bar-row">
-          <span class="bar-label">Bạc tích lũy</span>
-          <div class="bar-track"><div class="bar-fill" style="width:0.7%"></div></div>
-          <span class="bar-value">0,7%</span>
+        <div class="kpi">
+          <div class="label">% đạt mục tiêu tháng</div>
+          <div class="value">37,5%</div>
+          <div class="sub down">Theo tiến độ ngày: 43,1%</div>
         </div>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Danh mục</th>
-              <th class="num">Doanh thu</th>
-              <th class="num">Tỷ trọng</th>
-              <th class="num">Số đơn</th>
-              <th class="num">LN gộp</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Vàng tích lũy</strong></td>
-              <td class="num">970.723.000 đ</td>
-              <td class="num">65,1%</td>
-              <td class="num">83</td>
-              <td class="num">13,06 tr</td>
-            </tr>
-            <tr>
-              <td><strong>TS vàng ta</strong></td>
-              <td class="num">395.371.950 đ</td>
-              <td class="num">26,5%</td>
-              <td class="num">95</td>
-              <td class="num">1,87 tr</td>
-            </tr>
-            <tr>
-              <td><strong>TS vàng tây</strong></td>
-              <td class="num">95.718.500 đ</td>
-              <td class="num">6,4%</td>
-              <td class="num">13</td>
-              <td class="num">20,34 tr</td>
-            </tr>
-            <tr>
-              <td>BST</td>
-              <td class="num">16.510.000 đ</td>
-              <td class="num">1,1%</td>
-              <td class="num">2</td>
-              <td class="num">7,43 tr</td>
-            </tr>
-            <tr>
-              <td>Bạc tích lũy</td>
-              <td class="num">10.048.000 đ</td>
-              <td class="num">0,7%</td>
-              <td class="num">2</td>
-              <td class="num" style="color:var(--danger)">−0,20 tr</td>
-            </tr>
-            <tr>
-              <td>Hỗn hợp</td>
-              <td class="num">2.589.500 đ</td>
-              <td class="num">0,2%</td>
-              <td class="num">8</td>
-              <td class="num">1,81 tr</td>
-            </tr>
-            <tr>
-              <td>Khác (quà tặng)</td>
-              <td class="num">0 đ</td>
-              <td class="num">0%</td>
-              <td class="num">31</td>
-              <td class="num" style="color:var(--danger)">−0,22 tr</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="highlight-box">
-        <strong>Nhận xét:</strong> Vàng tích lũy (KGB) chiếm 2/3 doanh thu. TS vàng tây chỉ 6,4% doanh thu nhưng mang lợi nhuận gộp cao nhất (margin ~21%) — tiềm năng đẩy mạnh.
+        <div class="kpi">
+          <div class="label">Dự kiến hết tháng</div>
+          <div class="value">8,73 tỷ</div>
+          <div class="sub down">TB 281 tr/ngày × 4 ngày còn · ~43% mục tiêu</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Doanh thu / khách</div>
+          <div class="value">4,85 triệu</div>
+          <div class="sub">TB 18,0 hóa đơn/ngày</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Khách hàng mua</div>
+          <div class="value">370</div>
+          <div class="sub">20% quay lại (≥2 hóa đơn)</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Sản lượng bán</div>
+          <div class="value">1.254</div>
+          <div class="sub">~622 chỉ vàng · 642 TL tổng</div>
+        </div>
       </div>
     </section>
 
-    <!-- Section 2: Best & Slow sellers -->
-    <section id="nganh-hang">
-      <h2>Ngành hàng bán chạy & bán chậm</h2>
+    <!-- Insights -->
+    <section>
+      <div class="insights">
+        <div class="insight">
+          <strong>Điểm sáng</strong>
+          <p>Tỷ lệ chuyển đổi 30,9% khá tốt. Tuần 1 đóng góp gần nửa doanh thu kỳ (3,64 tỷ). Trần Thái Bình dẫn đầu với 37,3% doanh thu cửa hàng.</p>
+        </div>
+        <div class="insight">
+          <strong>Điểm nghẽn</strong>
+          <p>Giữ nhịp hiện tại (~281 tr/ngày), hết tháng dự kiến ~8,73 tỷ (~43% mục tiêu), thiếu ~11,6 tỷ. Muốn đạt mục tiêu phải bán ~3,17 tỷ/ngày còn lại — gần như không khả thi.</p>
+        </div>
+        <div class="insight">
+          <strong>Cấu trúc hàng</strong>
+          <p>Theo danh mục MH35: Vàng TT 74,3% DT nhưng mới 32,5% KH. TS vàng ta gần đạt DT KH (89%) và vượt SL chiếc. Bạc TT rất mỏng (~10%).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Revenue trend -->
+    <section>
+      <div class="section-head">
+        <h2>Diễn biến doanh thu theo ngày</h2>
+        <span>Đỉnh: 07/08 (681 triệu) · Đáy: 10/08 (27,5 triệu)</span>
+      </div>
       <div class="grid-2">
-        <div>
-          <h3>Top nhóm hàng bán chạy</h3>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Nhóm hàng</th><th class="num">Doanh thu</th><th class="num">%</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><span class="tag tag-top">#1</span> KGB (Kim Gia Bảo)</td><td class="num">808,2 tr</td><td class="num">54,2%</td></tr>
-                <tr><td><span class="tag tag-top">#2</span> KHS</td><td class="num">162,5 tr</td><td class="num">10,9%</td></tr>
-                <tr><td><span class="tag tag-top">#3</span> QT24 (Quà tặng 24K)</td><td class="num">127,2 tr</td><td class="num">8,5%</td></tr>
-                <tr><td>#4 24KXV24KD0PT</td><td class="num">87,6 tr</td><td class="num">5,9%</td></tr>
-                <tr><td>#5 24CHV24KD03D</td><td class="num">60,1 tr</td><td class="num">4,0%</td></tr>
-              </tbody>
-            </table>
+        <div class="panel">
+          <h3>Doanh thu & số hóa đơn theo ngày</h3>
+          <div class="chart-box tall">
+            <canvas id="chartDaily"></canvas>
           </div>
-
-          <h3>Top 5 sản phẩm</h3>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Sản phẩm</th><th class="num">Doanh thu</th><th class="num">SL</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Nhẫn tròn ép vỉ KGB, 1 chỉ</td><td class="num">225,95 tr</td><td class="num">16</td></tr>
-                <tr><td>Nhẫn tròn ép vỉ KGB, 2 chỉ</td><td class="num">113,08 tr</td><td class="num">8</td></tr>
-                <tr><td>Đồng Xu KGB Hoa Sen, 5 chỉ</td><td class="num">70,60 tr</td><td class="num">5</td></tr>
-                <tr><td>Nhẫn tròn ép vỉ KGB, 5 chỉ</td><td class="num">70,60 tr</td><td class="num">5</td></tr>
-                <tr><td>Đồng Xu KGB Hoa Sen, 1 chỉ</td><td class="num">56,51 tr</td><td class="num">4</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <p class="note">Tuần 1 (1–9/8) mạnh nhất; giữa tháng giảm sâu rồi hồi phục tuần 3. Ngày 10/08 và 25/08 là hai đáy rõ.</p>
         </div>
-
-        <div>
-          <h3>Ngành hàng bán chậm</h3>
-          <div class="table-wrap">
+        <div class="panel">
+          <h3>Theo tuần vs kế hoạch</h3>
+          <div class="chart-box">
+            <canvas id="chartWeekly"></canvas>
+          </div>
+          <div class="table-wrap" style="margin-top:0.8rem">
             <table>
               <thead>
-                <tr><th>Danh mục / SP</th><th class="num">Doanh thu</th><th>Ghi chú</th></tr>
+                <tr>
+                  <th>Tuần</th>
+                  <th class="num">Thực tế</th>
+                  <th class="num">KH tuần</th>
+                  <th class="num">%</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="tag tag-low">Chậm</span> Khác (Túi vải)</td>
-                  <td class="num">0 đ</td>
-                  <td>48 cái tặng kèm, 31 đơn</td>
+                  <td>T1 (1–9)</td>
+                  <td class="num">3,64 tỷ</td>
+                  <td class="num">6,09 tỷ</td>
+                  <td class="num"><span class="tag warn">59,7%</span></td>
                 </tr>
                 <tr>
-                  <td><span class="tag tag-low">Chậm</span> Hỗn hợp</td>
-                  <td class="num">2,59 tr</td>
-                  <td>0,2% DT, 8 đơn</td>
+                  <td>T2 (10–16)</td>
+                  <td class="num">1,27 tỷ</td>
+                  <td class="num">5,07 tỷ</td>
+                  <td class="num"><span class="tag bad">25,1%</span></td>
                 </tr>
                 <tr>
-                  <td><span class="tag tag-low">Chậm</span> Bạc tích lũy</td>
-                  <td class="num">10,05 tr</td>
-                  <td>LN âm</td>
+                  <td>T3 (17–23)</td>
+                  <td class="num">2,05 tỷ</td>
+                  <td class="num">5,07 tỷ</td>
+                  <td class="num"><span class="tag warn">40,3%</span></td>
                 </tr>
                 <tr>
-                  <td><span class="tag tag-mid">Thấp</span> BST</td>
-                  <td class="num">16,51 tr</td>
-                  <td>Chỉ 2 đơn</td>
-                </tr>
-                <tr>
-                  <td><span class="tag tag-mid">Lẻ</span> Vàng 0,1–0,5 chỉ</td>
-                  <td class="num">1,4–7,1 tr/SP</td>
-                  <td>7 mã, SL rất thấp</td>
+                  <td>T4 (24–27)*</td>
+                  <td class="num">0,64 tỷ</td>
+                  <td class="num">4,06 tỷ</td>
+                  <td class="num"><span class="tag bad">15,7%</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
-
-          <div class="highlight-box">
-            Bạc tích lũy và quà tặng (túi vải) không đóng góp doanh thu. Các mẫu vàng siêu nhỏ phù hợp làm sản phẩm dẫn dắt khách hơn là mang lại DT chính.
-          </div>
+          <p class="note">*Tuần 4 mới 4/8 ngày. Mục tiêu tuần lấy từ phân bổ MH35.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Conversion -->
-    <section id="chuyen-doi">
-      <h2>Tỷ lệ chuyển đổi</h2>
+    <!-- Conversion & bill -->
+    <section>
+      <div class="section-head">
+        <h2>Chuyển đổi & cấu trúc đơn hàng</h2>
+        <span>1.568 lượt khách · 485 giao dịch</span>
+      </div>
+      <div class="grid-3">
+        <div class="panel">
+          <h3>Phễu bán hàng</h3>
+          <div class="progress-list">
+            <div class="progress-row">
+              <span class="name">Lượt khách vào cửa</span>
+              <span class="pct">1.568</span>
+              <div class="track"><i style="width:100%"></i></div>
+            </div>
+            <div class="progress-row">
+              <span class="name">Hóa đơn phát sinh</span>
+              <span class="pct">485 (30,9%)</span>
+              <div class="track"><i style="width:30.8%"></i></div>
+            </div>
+            <div class="progress-row">
+              <span class="name">Khách đã mua</span>
+              <span class="pct">370</span>
+              <div class="track"><i style="width:23.6%"></i></div>
+            </div>
+            <div class="progress-row">
+              <span class="name">Khách mua lại</span>
+              <span class="pct">74 (20%)</span>
+              <div class="track"><i style="width:20%"></i></div>
+            </div>
+          </div>
+          <p class="note">Cứ ~3 khách vào cửa thì có 1 người mua. Trung bình ~1,3 hóa đơn/khách mua.</p>
+        </div>
+        <div class="panel">
+          <h3>Phân bố giá trị hóa đơn</h3>
+          <div class="chart-box">
+            <canvas id="chartBillDist"></canvas>
+          </div>
+          <p class="note">Nhóm 2–5 triệu chiếm nhiều nhất (142 hóa đơn). Có 32 hóa đơn &gt;50 triệu kéo mạnh giá trị đơn TB lên 15,7tr trong khi trung vị chỉ 6,56tr.</p>
+        </div>
+        <div class="panel">
+          <h3>Chỉ số đơn hàng</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td>Trung bình hóa đơn</td>
+                <td class="num"><strong>15.674.678đ</strong></td>
+              </tr>
+              <tr>
+                <td>Trung vị hóa đơn</td>
+                <td class="num">6.563.000đ</td>
+              </tr>
+              <tr>
+                <td>TB doanh thu thuần/hóa đơn</td>
+                <td class="num">15.501.677đ</td>
+              </tr>
+              <tr>
+                <td>TB số SP / hóa đơn</td>
+                <td class="num">2,59</td>
+              </tr>
+              <tr>
+                <td>Trung vị SP / hóa đơn</td>
+                <td class="num">2,0</td>
+              </tr>
+              <tr>
+                <td>Hóa đơn nhỏ nhất</td>
+                <td class="num">10.000đ</td>
+              </tr>
+              <tr>
+                <td>Hóa đơn lớn nhất</td>
+                <td class="num">288.000.000đ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section>
+      <div class="section-head">
+        <h2>Cơ cấu theo danh mục mục tiêu MH35</h2>
+        <span>Vàng TT · Bạc TT · TS vàng ta · Trang sức khác</span>
+      </div>
       <div class="grid-2">
-        <div>
+        <div class="panel">
+          <h3>Cơ cấu doanh thu thực tế</h3>
+          <div class="chart-box">
+            <canvas id="chartCategory"></canvas>
+          </div>
+          <p class="note">Gom theo bảng phân bổ TVV: TS khác = TS vàng tây + BST + Hỗn hợp. Không tính túi/phụ kiện “Khác” (0đ).</p>
+        </div>
+        <div class="panel">
+          <h3>Đối chiếu mục tiêu cửa hàng</h3>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Chỉ tiêu</th><th class="num">Giá trị</th></tr>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT KH</th>
+                  <th class="num">SL kế hoạch</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL tính lương</th>
+                  <th class="num">% SL TL</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>Tổng lượt khách</td><td class="num"><strong>596</strong></td></tr>
-                <tr><td>Số đơn hàng</td><td class="num"><strong>184</strong></td></tr>
-                <tr><td>Tỷ lệ chuyển đổi</td><td class="num"><strong style="color:var(--gold)">30,87%</strong></td></tr>
-                <tr><td>Doanh thu / lượt khách</td><td class="num">2.501.612 đ</td></tr>
-                <tr><td>Đơn / KH unique</td><td class="num">1,13 đơn/KH</td></tr>
-                <tr><td>KH mua 2+ lần</td><td class="num">17 (10,4%)</td></tr>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">5,64 tỷ<br><span class="muted">KH 17,34 tỷ</span></td>
+                  <td class="num"><span class="tag bad">32,5%</span></td>
+                  <td class="num">388,7 / 1.225 chỉ</td>
+                  <td class="num"><span class="tag bad">31,7%</span></td>
+                  <td class="num">388,7 / 1.225 chỉ</td>
+                  <td class="num"><span class="tag bad">31,7%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">29,0 tr<br><span class="muted">KH 288,4 tr</span></td>
+                  <td class="num"><span class="tag bad">10,0%</span></td>
+                  <td class="num">110 / 1.235 chỉ</td>
+                  <td class="num"><span class="tag bad">8,9%</span></td>
+                  <td class="num">110 / 1.235 chỉ</td>
+                  <td class="num"><span class="tag bad">8,9%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">1,59 tỷ<br><span class="muted">KH 1,78 tỷ</span></td>
+                  <td class="num"><span class="tag good">89,2%</span></td>
+                  <td class="num">225 / 64 chiếc</td>
+                  <td class="num"><span class="tag good">351,6%</span></td>
+                  <td class="num">96,0 / 129 chỉ</td>
+                  <td class="num"><span class="tag good">74,4%</span></td>
+                </tr>
+                <tr>
+                  <td>Trang sức khác</td>
+                  <td class="num">334,3 tr<br><span class="muted">KH 875,0 tr</span></td>
+                  <td class="num"><span class="tag bad">38,2%</span></td>
+                  <td class="num">78 / 137 chiếc</td>
+                  <td class="num"><span class="tag warn">56,9%</span></td>
+                  <td class="num">78 / 137 chiếc</td>
+                  <td class="num"><span class="tag warn">56,9%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tổng</strong></td>
+                  <td class="num"><strong>7,60 tỷ</strong><br><span class="muted">KH 20,29 tỷ</span></td>
+                  <td class="num"><span class="tag bad">37,5%</span></td>
+                  <td class="num">802 / 2.661</td>
+                  <td class="num"><span class="tag bad">30,1%</span></td>
+                  <td class="num">673 / 2.726</td>
+                  <td class="num"><span class="tag bad">24,7%</span></td>
+                </tr>
               </tbody>
             </table>
           </div>
+          <p class="note">SL kế hoạch: Vàng/Bạc TT theo chỉ · TS vàng ta & TS khác theo chiếc. SL tính lương: TS vàng ta đổi sang chỉ (trọng lượng vàng); các nhóm còn lại giữ đơn vị như KH.</p>
         </div>
-        <div>
-          <h3>CR ước tính theo ngày</h3>
-          <p style="font-size:0.85rem">*Giả định lưu lượng đều ~149 lượt/ngày</p>
-          <div class="bar-chart">
-            <div class="bar-row">
-              <span class="bar-label">01/08 (T7)</span>
-              <div class="bar-track"><div class="bar-fill alt" style="width:90%"></div></div>
-              <span class="bar-value">~45%</span>
-            </div>
-            <div class="bar-row">
-              <span class="bar-label">02/08 (CN)</span>
-              <div class="bar-track"><div class="bar-fill alt" style="width:80%"></div></div>
-              <span class="bar-value">~40%</span>
-            </div>
-            <div class="bar-row">
-              <span class="bar-label">04/08 (T3)</span>
-              <div class="bar-track"><div class="bar-fill alt" style="width:42%"></div></div>
-              <span class="bar-value">~21%</span>
-            </div>
-            <div class="bar-row">
-              <span class="bar-label">03/08 (T2)</span>
-              <div class="bar-track"><div class="bar-fill alt" style="width:34%"></div></div>
-              <span class="bar-value">~17%</span>
-            </div>
-          </div>
+      </div>
+
+      <div class="panel" style="margin-top:1rem">
+        <h3>Dòng SP nổi bật trong từng danh mục</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Danh mục</th>
+                <th>Bán chạy</th>
+                <th>Bán chậm / mỏng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vàng TT</td>
+                <td>KGB nhẫn ép vỉ 1–2 chỉ, Hoa Sen 5–10 chỉ</td>
+                <td class="muted">— (động lực chính, nhưng mới ~32% KH tháng)</td>
+              </tr>
+              <tr>
+                <td>Bạc TT</td>
+                <td>—</td>
+                <td>Rất mỏng: 29 tr / 110 chỉ (~10% DT KH, ~9% SL)</td>
+              </tr>
+              <tr>
+                <td>TS vàng ta</td>
+                <td>24K Quà tặng, CNC, PT, 3D — vượt SL chiếc KH</td>
+                <td>SL tính lương (chỉ) mới 74% — hàng nhẹ/quà tặng nhiều</td>
+              </tr>
+              <tr>
+                <td>Trang sức khác</td>
+                <td>PC Ý 10K (140 tr, 32 chiếc)</td>
+                <td>Nhẫn cưới, BST, Bạc trang sức, Phong thủy giá trị đơn thấp</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: AOV -->
-    <section id="don-hang">
-      <h2>Trung bình đơn hàng & phân bố bill</h2>
-      <div class="grid-2">
-        <div>
+    <!-- Staff -->
+    <section>
+      <div class="section-head">
+        <h2>Hiệu suất tư vấn viên theo danh mục</h2>
+        <span>Doanh thu · SL kế hoạch · SL tính lương — đối chiếu mục tiêu MH35</span>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:1rem">
+        <div class="panel">
+          <h3>Tỷ trọng doanh thu thực tế so với KH</h3>
+          <div class="chart-box">
+            <canvas id="chartStaff"></canvas>
+          </div>
+          <p class="note">Mục tiêu tỷ trọng: Ý Nhi 18,0% · 5 TVV còn lại mỗi người 16,4%.</p>
+        </div>
+        <div class="panel">
+          <h3>Tổng hợp nhanh</h3>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Chỉ tiêu</th><th class="num">Giá trị</th></tr>
+                <tr>
+                  <th>TVV</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>TB đơn hàng (AOV)</td><td class="num"><strong>8.103.049 đ</strong></td></tr>
-                <tr><td>Trung vị bill</td><td class="num"><strong>2.824.000 đ</strong></td></tr>
-                <tr><td>TB sản phẩm / đơn</td><td class="num">1,75 SP</td></tr>
-                <tr><td>TB doanh thu / dòng SP</td><td class="num">4.630.314 đ</td></tr>
-                <tr><td>TB trọng lượng vàng / đơn</td><td class="num">0,78 chỉ</td></tr>
-                <tr><td>Đơn &gt; 50 triệu</td><td class="num">4 đơn</td></tr>
+                <tr>
+                  <td>Trần Thái Bình</td>
+                  <td class="num">2,83 tỷ</td>
+                  <td class="num"><span class="tag good">85,1%</span></td>
+                  <td class="num">221 / 436</td>
+                  <td class="num"><span class="tag warn">50,6%</span></td>
+                  <td class="num">196 / 447</td>
+                  <td class="num"><span class="tag warn">43,9%</span></td>
+                </tr>
+                <tr>
+                  <td>Nông Thị Ý Nhi</td>
+                  <td class="num">1,68 tỷ</td>
+                  <td class="num"><span class="tag warn">45,9%</span></td>
+                  <td class="num">127 / 479</td>
+                  <td class="num"><span class="tag bad">26,4%</span></td>
+                  <td class="num">125 / 491</td>
+                  <td class="num"><span class="tag bad">25,5%</span></td>
+                </tr>
+                <tr>
+                  <td>Bùi Ngọc Phước</td>
+                  <td class="num">1,40 tỷ</td>
+                  <td class="num"><span class="tag warn">42,2%</span></td>
+                  <td class="num">236 / 436</td>
+                  <td class="num"><span class="tag warn">54,1%</span></td>
+                  <td class="num">177 / 447</td>
+                  <td class="num"><span class="tag bad">39,7%</span></td>
+                </tr>
+                <tr>
+                  <td>Nguyễn Cẩm Tú</td>
+                  <td class="num">694 tr</td>
+                  <td class="num"><span class="tag bad">20,9%</span></td>
+                  <td class="num">85 / 436</td>
+                  <td class="num"><span class="tag bad">19,4%</span></td>
+                  <td class="num">65 / 447</td>
+                  <td class="num"><span class="tag bad">14,5%</span></td>
+                </tr>
+                <tr>
+                  <td>Phạm Thị Minh Hiếu</td>
+                  <td class="num">653 tr</td>
+                  <td class="num"><span class="tag bad">19,6%</span></td>
+                  <td class="num">61 / 436</td>
+                  <td class="num"><span class="tag bad">14,0%</span></td>
+                  <td class="num">50 / 447</td>
+                  <td class="num"><span class="tag bad">11,1%</span></td>
+                </tr>
+                <tr>
+                  <td>Đặng Thị Thu Quanh</td>
+                  <td class="num">342 tr</td>
+                  <td class="num"><span class="tag bad">10,3%</span></td>
+                  <td class="num">73 / 436</td>
+                  <td class="num"><span class="tag bad">16,8%</span></td>
+                  <td class="num">60 / 447</td>
+                  <td class="num"><span class="tag bad">13,4%</span></td>
+                </tr>
               </tbody>
             </table>
           </div>
-          <div class="highlight-box">
-            AOV (8,1 tr) cao hơn nhiều so với trung vị (2,8 tr) — một số đơn lớn kéo trung bình lên. Hơn nửa đơn (53%) nằm mức 1–3 triệu.
-          </div>
+          <p class="note">SL KH/TL tổng = cộng 4 danh mục (đơn vị khác nhau nên chỉ dùng để theo dõi tiến độ tổng).</p>
         </div>
-        <div>
-          <h3>Phân bố giá trị bill</h3>
-          <div class="bill-dist">
-            <div class="bill-chip"><strong>2</strong>&lt; 1 tr</div>
-            <div class="bill-chip" style="border-color:var(--gold)"><strong>98</strong>1 – 3 tr</div>
-            <div class="bill-chip"><strong>10</strong>3 – 5 tr</div>
-            <div class="bill-chip"><strong>28</strong>5 – 10 tr</div>
-            <div class="bill-chip"><strong>32</strong>10 – 20 tr</div>
-            <div class="bill-chip"><strong>10</strong>20 – 50 tr</div>
-            <div class="bill-chip"><strong>4</strong>&gt; 50 tr</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 5: Daily -->
-    <section id="theo-ngay">
-      <h2>Phân tích theo ngày</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Ngày</th>
-              <th>Thứ</th>
-              <th class="num">Đơn</th>
-              <th class="num">Doanh thu</th>
-              <th class="num">LN gộp</th>
-              <th class="num">AOV</th>
-              <th class="num">Dòng SP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>01/08/2026</strong></td>
-              <td>Thứ 7</td>
-              <td class="num"><strong>67</strong></td>
-              <td class="num"><strong>610,9 tr</strong></td>
-              <td class="num">9,36 tr</td>
-              <td class="num">9,12 tr</td>
-              <td class="num">118</td>
-            </tr>
-            <tr>
-              <td>02/08/2026</td>
-              <td>Chủ nhật</td>
-              <td class="num">59</td>
-              <td class="num">332,5 tr</td>
-              <td class="num"><strong>18,60 tr</strong></td>
-              <td class="num">5,64 tr</td>
-              <td class="num">81</td>
-            </tr>
-            <tr>
-              <td>03/08/2026</td>
-              <td>Thứ 2</td>
-              <td class="num" style="color:var(--danger)">26</td>
-              <td class="num" style="color:var(--danger)">189,5 tr</td>
-              <td class="num">14,21 tr</td>
-              <td class="num">7,29 tr</td>
-              <td class="num">51</td>
-            </tr>
-            <tr>
-              <td>04/08/2026</td>
-              <td>Thứ 3</td>
-              <td class="num">32</td>
-              <td class="num">358,1 tr</td>
-              <td class="num">1,91 tr</td>
-              <td class="num"><strong>11,19 tr</strong></td>
-              <td class="num">72</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="bar-chart" style="margin-top:1.5rem">
-        <div class="bar-row">
-          <span class="bar-label">01/08 T7</span>
-          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
-          <span class="bar-value">610,9 tr</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">04/08 T3</span>
-          <div class="bar-track"><div class="bar-fill" style="width:58.6%"></div></div>
-          <span class="bar-value">358,1 tr</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">02/08 CN</span>
-          <div class="bar-track"><div class="bar-fill" style="width:54.4%"></div></div>
-          <span class="bar-value">332,5 tr</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">03/08 T2</span>
-          <div class="bar-track"><div class="bar-fill" style="width:31%"></div></div>
-          <span class="bar-value">189,5 tr</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 6: Staff -->
-    <section id="nhan-vien">
-      <h2>Hiệu suất nhân viên</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Nhân viên</th>
-              <th class="num">Doanh thu</th>
-              <th class="num">% DT</th>
-              <th class="num">Số đơn</th>
-              <th class="num">% Đơn</th>
-              <th class="num">AOV</th>
-              <th class="num">SP/đơn</th>
-              <th class="num">LN gộp</th>
-              <th class="num">Margin</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Nông Thị ý Nhi</strong></td>
-              <td class="num">483,6 tr</td>
-              <td class="num"><strong>32,4%</strong></td>
-              <td class="num">27</td>
-              <td class="num">14,7%</td>
-              <td class="num"><strong>17,9 tr</strong></td>
-              <td class="num">2,0</td>
-              <td class="num">17,0 tr</td>
-              <td class="num">3,51%</td>
-            </tr>
-            <tr>
-              <td><strong>Bùi Ngọc Phước</strong></td>
-              <td class="num">385,2 tr</td>
-              <td class="num"><strong>25,8%</strong></td>
-              <td class="num"><strong>49</strong></td>
-              <td class="num"><strong>26,6%</strong></td>
-              <td class="num">7,9 tr</td>
-              <td class="num"><strong>2,1</strong></td>
-              <td class="num">2,5 tr</td>
-              <td class="num">0,64%</td>
-            </tr>
-            <tr>
-              <td>Trần Thái Bình</td>
-              <td class="num">227,1 tr</td>
-              <td class="num">15,2%</td>
-              <td class="num">36</td>
-              <td class="num">19,6%</td>
-              <td class="num">6,3 tr</td>
-              <td class="num">1,7</td>
-              <td class="num">2,5 tr</td>
-              <td class="num">1,08%</td>
-            </tr>
-            <tr>
-              <td>Phạm Thị Minh Hiếu</td>
-              <td class="num">181,1 tr</td>
-              <td class="num">12,1%</td>
-              <td class="num">25</td>
-              <td class="num">13,6%</td>
-              <td class="num">7,2 tr</td>
-              <td class="num">1,3</td>
-              <td class="num"><strong>21,3 tr</strong></td>
-              <td class="num"><strong style="color:var(--gold)">11,77%</strong></td>
-            </tr>
-            <tr>
-              <td>Đặng Thị Thu Quanh</td>
-              <td class="num">137,7 tr</td>
-              <td class="num">9,2%</td>
-              <td class="num">26</td>
-              <td class="num">14,1%</td>
-              <td class="num">5,3 tr</td>
-              <td class="num">1,6</td>
-              <td class="num">0,2 tr</td>
-              <td class="num" style="color:var(--danger)">0,14%</td>
-            </tr>
-            <tr>
-              <td>Nguyễn Cẩm Tú</td>
-              <td class="num">76,3 tr</td>
-              <td class="num">5,1%</td>
-              <td class="num">21</td>
-              <td class="num">11,4%</td>
-              <td class="num" style="color:var(--danger)">3,6 tr</td>
-              <td class="num">1,3</td>
-              <td class="num">0,7 tr</td>
-              <td class="num">0,88%</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
-      <h3>Tỷ số bán hàng (so với trung bình nhóm)</h3>
       <div class="staff-grid">
-        <div class="staff-card rank-1">
-          <div class="name">🥇 Nông Thị ý Nhi</div>
-          <div class="stats">
-            <div><span>Tỷ số DT:</span> <strong>1,94x</strong></div>
-            <div><span>Tỷ số đơn:</span> <strong>0,80x</strong></div>
-            <div colspan="2" style="grid-column:1/-1;margin-top:0.25rem;font-size:0.8rem;color:var(--text-muted)">Ít đơn nhưng đơn rất lớn — chuyên gia upsell</div>
+        <div class="panel staff-card">
+          <h3>
+            <span>Trần Thái Bình</span>
+            <span class="tag good">85,1% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,33 tỷ · Tỷ trọng KH 16,4% · Tỷ trọng thực tế 37,3%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">2,83 tỷ <span class="muted">(85,1%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">221 / 436 <span class="muted">(50,6%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">196 / 447 <span class="muted">(43,9%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">2,53 tỷ</td>
+                  <td class="num"><span class="tag good">88,9%</span></td>
+                  <td class="num">172,5 / 201 chỉ</td>
+                  <td class="num"><span class="tag good">85,8%</span></td>
+                  <td class="num">172,5 / 201 chỉ</td>
+                  <td class="num"><span class="tag good">85,8%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">0</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">271,4 tr</td>
+                  <td class="num"><span class="tag good">93,1%</span></td>
+                  <td class="num">40 / 10 chiếc</td>
+                  <td class="num"><span class="tag good">400%</span></td>
+                  <td class="num">15,6 / 21 chỉ</td>
+                  <td class="num"><span class="tag good">74,3%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">29,2 tr</td>
+                  <td class="num"><span class="tag bad">20,4%</span></td>
+                  <td class="num">8 / 22 chiếc</td>
+                  <td class="num"><span class="tag bad">36,4%</span></td>
+                  <td class="num">8 / 22 chiếc</td>
+                  <td class="num"><span class="tag bad">36,4%</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="staff-card rank-1">
-          <div class="name">🥈 Bùi Ngọc Phước</div>
-          <div class="stats">
-            <div><span>Tỷ số DT:</span> <strong>1,55x</strong></div>
-            <div><span>Tỷ số đơn:</span> <strong>1,44x</strong></div>
-            <div colspan="2" style="grid-column:1/-1;margin-top:0.25rem;font-size:0.8rem;color:var(--text-muted)">Cân bằng: nhiều đơn + doanh thu cao</div>
+
+        <div class="panel staff-card">
+          <h3>
+            <span>Nông Thị Ý Nhi</span>
+            <span class="tag warn">45,9% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,66 tỷ · Tỷ trọng KH 18,0% · Tỷ trọng thực tế 22,1%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">1,68 tỷ <span class="muted">(45,9%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">127 / 479 <span class="muted">(26,4%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">125 / 491 <span class="muted">(25,5%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">1,16 tỷ</td>
+                  <td class="num"><span class="tag bad">37,2%</span></td>
+                  <td class="num">80,5 / 221 chỉ</td>
+                  <td class="num"><span class="tag bad">36,4%</span></td>
+                  <td class="num">80,5 / 221 chỉ</td>
+                  <td class="num"><span class="tag bad">36,4%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">0</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 222 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 222 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">414,2 tr</td>
+                  <td class="num"><span class="tag good">129,3%</span></td>
+                  <td class="num">28 / 12 chiếc</td>
+                  <td class="num"><span class="tag good">233%</span></td>
+                  <td class="num">26,6 / 23 chỉ</td>
+                  <td class="num"><span class="tag good">116%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">102,2 tr</td>
+                  <td class="num"><span class="tag warn">64,8%</span></td>
+                  <td class="num">18 / 25 chiếc</td>
+                  <td class="num"><span class="tag good">72,0%</span></td>
+                  <td class="num">18 / 25 chiếc</td>
+                  <td class="num"><span class="tag good">72,0%</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="staff-card">
-          <div class="name">Phạm Thị Minh Hiếu</div>
-          <div class="stats">
-            <div><span>Tỷ số DT:</span> <strong>0,73x</strong></div>
-            <div><span>Margin:</span> <strong style="color:var(--gold)">11,77%</strong></div>
-            <div colspan="2" style="grid-column:1/-1;margin-top:0.25rem;font-size:0.8rem;color:var(--text-muted)">Margin cao nhất — bán hàng lợi nhuận</div>
+
+        <div class="panel staff-card">
+          <h3>
+            <span>Bùi Ngọc Phước</span>
+            <span class="tag warn">42,2% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,33 tỷ · Tỷ trọng KH 16,4% · Tỷ trọng thực tế 18,5%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">1,40 tỷ <span class="muted">(42,2%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">236 / 436 <span class="muted">(54,1%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">177 / 447 <span class="muted">(39,7%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">892,7 tr</td>
+                  <td class="num"><span class="tag bad">31,4%</span></td>
+                  <td class="num">62 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">30,9%</span></td>
+                  <td class="num">62 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">30,9%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">18,4 tr</td>
+                  <td class="num"><span class="tag bad">38,8%</span></td>
+                  <td class="num">70 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">34,7%</span></td>
+                  <td class="num">70 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">34,7%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">421,3 tr</td>
+                  <td class="num"><span class="tag good">144,5%</span></td>
+                  <td class="num">84 / 10 chiếc</td>
+                  <td class="num"><span class="tag good">840%</span></td>
+                  <td class="num">25,4 / 21 chỉ</td>
+                  <td class="num"><span class="tag good">121%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">61,5 tr</td>
+                  <td class="num"><span class="tag warn">42,9%</span></td>
+                  <td class="num">20 / 22 chiếc</td>
+                  <td class="num"><span class="tag good">90,9%</span></td>
+                  <td class="num">20 / 22 chiếc</td>
+                  <td class="num"><span class="tag good">90,9%</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="staff-card">
-          <div class="name">Nguyễn Cẩm Tú</div>
-          <div class="stats">
-            <div><span>Tỷ số DT:</span> <strong style="color:var(--danger)">0,31x</strong></div>
-            <div><span>AOV:</span> <strong style="color:var(--danger)">3,6 tr</strong></div>
-            <div colspan="2" style="grid-column:1/-1;margin-top:0.25rem;font-size:0.8rem;color:var(--text-muted)">Cần hỗ trợ — thấp nhất nhóm</div>
+
+        <div class="panel staff-card">
+          <h3>
+            <span>Nguyễn Cẩm Tú</span>
+            <span class="tag bad">20,9% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,33 tỷ · Tỷ trọng KH 16,4% · Tỷ trọng thực tế 9,1%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">694 tr <span class="muted">(20,9%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">85 / 436 <span class="muted">(19,4%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">65 / 447 <span class="muted">(14,5%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">425,1 tr</td>
+                  <td class="num"><span class="tag bad">14,9%</span></td>
+                  <td class="num">29,6 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">14,7%</span></td>
+                  <td class="num">29,6 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">14,7%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">2,5 tr</td>
+                  <td class="num"><span class="tag bad">5,3%</span></td>
+                  <td class="num">10 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">5,0%</span></td>
+                  <td class="num">10 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">5,0%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">253,1 tr</td>
+                  <td class="num"><span class="tag good">86,8%</span></td>
+                  <td class="num">35 / 10 chiếc</td>
+                  <td class="num"><span class="tag good">350%</span></td>
+                  <td class="num">15,0 / 21 chỉ</td>
+                  <td class="num"><span class="tag good">71,4%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">13,6 tr</td>
+                  <td class="num"><span class="tag bad">9,5%</span></td>
+                  <td class="num">10 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">45,5%</span></td>
+                  <td class="num">10 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">45,5%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel staff-card">
+          <h3>
+            <span>Phạm Thị Minh Hiếu</span>
+            <span class="tag bad">19,6% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,33 tỷ · Tỷ trọng KH 16,4% · Tỷ trọng thực tế 8,6%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">653 tr <span class="muted">(19,6%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">61 / 436 <span class="muted">(14,0%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">50 / 447 <span class="muted">(11,1%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">388,5 tr</td>
+                  <td class="num"><span class="tag bad">13,7%</span></td>
+                  <td class="num">27 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">13,4%</span></td>
+                  <td class="num">27 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">13,4%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">0</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                  <td class="num">0 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">0%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">158,8 tr</td>
+                  <td class="num"><span class="tag warn">54,4%</span></td>
+                  <td class="num">21 / 10 chiếc</td>
+                  <td class="num"><span class="tag good">210%</span></td>
+                  <td class="num">9,8 / 21 chỉ</td>
+                  <td class="num"><span class="tag warn">46,7%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">105,7 tr</td>
+                  <td class="num"><span class="tag good">73,7%</span></td>
+                  <td class="num">13 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">59,1%</span></td>
+                  <td class="num">13 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">59,1%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel staff-card">
+          <h3>
+            <span>Đặng Thị Thu Quanh</span>
+            <span class="tag bad">10,3% DT</span>
+          </h3>
+          <div class="staff-meta">Mục tiêu 3,33 tỷ · Tỷ trọng KH 16,4% · Tỷ trọng thực tế 4,5%</div>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="l">Doanh thu</div><div class="v">342 tr <span class="muted">(10,3%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL kế hoạch</div><div class="v">73 / 436 <span class="muted">(16,8%)</span></div></div>
+            <div class="mini-kpi"><div class="l">SL tính lương</div><div class="v">60 / 447 <span class="muted">(13,4%)</span></div></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Danh mục</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">% DT</th>
+                  <th class="num">SL KH</th>
+                  <th class="num">% SL KH</th>
+                  <th class="num">SL TL</th>
+                  <th class="num">% SL TL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vàng TT</td>
+                  <td class="num">244,4 tr</td>
+                  <td class="num"><span class="tag bad">8,6%</span></td>
+                  <td class="num">17,1 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">8,5%</span></td>
+                  <td class="num">17,1 / 201 chỉ</td>
+                  <td class="num"><span class="tag bad">8,5%</span></td>
+                </tr>
+                <tr>
+                  <td>Bạc TT</td>
+                  <td class="num">8,1 tr</td>
+                  <td class="num"><span class="tag bad">17,1%</span></td>
+                  <td class="num">30 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">14,9%</span></td>
+                  <td class="num">30 / 202 chỉ</td>
+                  <td class="num"><span class="tag bad">14,9%</span></td>
+                </tr>
+                <tr>
+                  <td>TS vàng ta</td>
+                  <td class="num">67,7 tr</td>
+                  <td class="num"><span class="tag bad">23,2%</span></td>
+                  <td class="num">17 / 10 chiếc</td>
+                  <td class="num"><span class="tag good">170%</span></td>
+                  <td class="num">3,6 / 21 chỉ</td>
+                  <td class="num"><span class="tag bad">17,1%</span></td>
+                </tr>
+                <tr>
+                  <td>TS khác</td>
+                  <td class="num">22,0 tr</td>
+                  <td class="num"><span class="tag bad">15,3%</span></td>
+                  <td class="num">9 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">40,9%</span></td>
+                  <td class="num">9 / 22 chiếc</td>
+                  <td class="num"><span class="tag warn">40,9%</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 7: Recommendations -->
-    <section id="khuyen-nghi">
-      <h2>Kết luận & khuyến nghị</h2>
+
+    <!-- Daily product performance -->
+    <section>
+      <div class="section-head">
+        <h2>Hàng bán chạy & chậm theo ngày</h2>
+        <span>Phân tích theo chủng loại · TS 24K, Vàng tích lũy, TS vàng tây</span>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:1rem">
+        <div class="panel">
+          <h3>TS 24K — Cơ cấu chủng loại (cả kỳ)</h3>
+          <p class="note" style="margin-bottom:0.75rem">Gom CNC, PT, 3D, CN, Quà tặng 24K. Nhóm: Dây, Vòng, Lắc, Nhẫn, Charm, Miếng vàng…</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Chủng loại</th>
+                  <th class="num">Doanh thu</th>
+                  <th class="num">SL</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>★ Miếng vàng</td>
+                  <td class="num">460,4tr</td>
+                  <td class="num">148</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ Vòng</td>
+                  <td class="num">287,9tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:63%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ Dây cổ</td>
+                  <td class="num">227,8tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:49%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Lắc</td>
+                  <td class="num">154,7tr</td>
+                  <td class="num">12</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:34%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Charm</td>
+                  <td class="num">150,9tr</td>
+                  <td class="num">28</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:33%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Nhẫn</td>
+                  <td class="num">137,3tr</td>
+                  <td class="num">11</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:30%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Kiềng</td>
+                  <td class="num">87,6tr</td>
+                  <td class="num">2</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:19%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Tượng</td>
+                  <td class="num">39,9tr</td>
+                  <td class="num">3</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:9%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Mặt dây</td>
+                  <td class="num">36,6tr</td>
+                  <td class="num">3</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:8%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Bông tai</td>
+                  <td class="num">13,3tr</td>
+                  <td class="num">1</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>TS 24K — Theo dòng sản phẩm</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dòng SP</th>
+                  <th class="num">DT</th>
+                  <th>Bán chạy nhất</th>
+                  <th class="num">DT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Quà tặng 24K</td>
+                  <td class="num">500,3tr</td>
+                  <td>Miếng vàng</td>
+                  <td class="num">460,4tr</td>
+                </tr>
+                <tr>
+                  <td>CNC</td>
+                  <td class="num">469,3tr</td>
+                  <td>Vòng tay</td>
+                  <td class="num">139,5tr</td>
+                </tr>
+                <tr>
+                  <td>PT</td>
+                  <td class="num">235,8tr</td>
+                  <td>Kiềng có lõi xi</td>
+                  <td class="num">87,6tr</td>
+                </tr>
+                <tr>
+                  <td>3D</td>
+                  <td class="num">197,0tr</td>
+                  <td>Charm vàng</td>
+                  <td class="num">150,9tr</td>
+                </tr>
+                <tr>
+                  <td>CN</td>
+                  <td class="num">166,4tr</td>
+                  <td>Dây cổ liền mặt</td>
+                  <td class="num">87,5tr</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Quà tặng 24K chủ yếu Miếng vàng. CNC mạnh Vòng/Lắc/Dây cổ. 3D dẫn đầu Charm.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>TS 24K — Top & chậm theo từng ngày</h3>
+        <div class="table-wrap daily-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ngày</th>
+                <th class="num">DT ngày</th>
+                <th>Bán chạy (top 3)</th>
+                <th>Chậm / ít doanh thu</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>01/08</td>
+                  <td class="num">157,7tr</td>
+                  <td><strong>Miếng vàng</strong> 87,0tr · <strong>Vòng</strong> 28,9tr · <strong>Charm</strong> 13,9tr</td>
+                  <td class="muted">Tượng 8,2tr · Lắc 8,2tr</td>
+                </tr>
+                <tr>
+                  <td>02/08</td>
+                  <td class="num">198,0tr</td>
+                  <td><strong>Kiềng</strong> 87,6tr · <strong>Miếng vàng</strong> 63,5tr · <strong>Charm</strong> 39,2tr</td>
+                  <td class="muted">Charm 39,2tr · Lắc 7,7tr</td>
+                </tr>
+                <tr>
+                  <td>03/08</td>
+                  <td class="num">61,7tr</td>
+                  <td><strong>Miếng vàng</strong> 21,1tr · <strong>Mặt dây</strong> 14,3tr · <strong>Lắc</strong> 13,4tr</td>
+                  <td class="muted">Lắc 13,4tr · Dây cổ 12,8tr</td>
+                </tr>
+                <tr>
+                  <td>04/08</td>
+                  <td class="num">63,3tr</td>
+                  <td><strong>Miếng vàng</strong> 40,0tr · <strong>Tượng</strong> 15,6tr · <strong>Charm</strong> 7,7tr</td>
+                  <td class="muted">Tượng 15,6tr · Charm 7,7tr</td>
+                </tr>
+                <tr>
+                  <td>05/08</td>
+                  <td class="num">48,0tr</td>
+                  <td><strong>Nhẫn</strong> 30,2tr · <strong>Charm</strong> 10,7tr · <strong>Miếng vàng</strong> 7,0tr</td>
+                  <td class="muted">Charm 10,7tr · Miếng vàng 7,0tr</td>
+                </tr>
+                <tr>
+                  <td>06/08</td>
+                  <td class="num">45,2tr</td>
+                  <td><strong>Dây cổ</strong> 21,3tr · <strong>Charm</strong> 12,1tr · <strong>Miếng vàng</strong> 11,8tr</td>
+                  <td class="muted">Charm 12,1tr · Miếng vàng 11,8tr</td>
+                </tr>
+                <tr>
+                  <td>07/08</td>
+                  <td class="num">99,1tr</td>
+                  <td><strong>Vòng</strong> 88,8tr · <strong>Charm</strong> 5,6tr · <strong>Miếng vàng</strong> 4,7tr</td>
+                  <td class="muted">Charm 5,6tr · Miếng vàng 4,7tr</td>
+                </tr>
+                <tr>
+                  <td>08/08</td>
+                  <td class="num">46,6tr</td>
+                  <td><strong>Vòng</strong> 30,6tr · <strong>Tượng</strong> 16,0tr</td>
+                  <td class="muted">Vòng 30,6tr · Tượng 16,0tr</td>
+                </tr>
+                <tr>
+                  <td>09/08</td>
+                  <td class="num">106,6tr</td>
+                  <td><strong>Dây cổ</strong> 87,5tr · <strong>Nhẫn</strong> 10,9tr · <strong>Charm</strong> 8,2tr</td>
+                  <td class="muted">Nhẫn 10,9tr · Charm 8,2tr</td>
+                </tr>
+                <tr>
+                  <td>10/08</td>
+                  <td class="num">9,3tr</td>
+                  <td><strong>Lắc</strong> 9,3tr</td>
+                  <td class="muted">Lắc 9,3tr</td>
+                </tr>
+                <tr>
+                  <td>11/08</td>
+                  <td class="num">57,5tr</td>
+                  <td><strong>Vòng</strong> 33,7tr · <strong>Lắc</strong> 23,8tr</td>
+                  <td class="muted">Vòng 33,7tr · Lắc 23,8tr</td>
+                </tr>
+                <tr>
+                  <td>12/08</td>
+                  <td class="num">11,8tr</td>
+                  <td><strong>Charm</strong> 11,8tr</td>
+                  <td class="muted">Charm 11,8tr</td>
+                </tr>
+                <tr>
+                  <td>13/08</td>
+                  <td class="num">12,5tr</td>
+                  <td><strong>Nhẫn</strong> 12,5tr</td>
+                  <td class="muted">Nhẫn 12,5tr</td>
+                </tr>
+                <tr>
+                  <td>14/08</td>
+                  <td class="num">13,9tr</td>
+                  <td><strong>Charm</strong> 7,4tr · <strong>Mặt dây</strong> 6,6tr</td>
+                  <td class="muted">Charm 7,4tr · Mặt dây 6,6tr</td>
+                </tr>
+                <tr>
+                  <td>15/08</td>
+                  <td class="num">29,8tr</td>
+                  <td><strong>Lắc</strong> 24,5tr · <strong>Charm</strong> 5,3tr</td>
+                  <td class="muted">Lắc 24,5tr · Charm 5,3tr</td>
+                </tr>
+                <tr>
+                  <td>16/08</td>
+                  <td class="num">81,2tr</td>
+                  <td><strong>Vòng</strong> 44,2tr · <strong>Dây cổ</strong> 21,3tr · <strong>Nhẫn</strong> 15,8tr</td>
+                  <td class="muted">Dây cổ 21,3tr · Nhẫn 15,8tr</td>
+                </tr>
+                <tr>
+                  <td>17/08</td>
+                  <td class="num">27,8tr</td>
+                  <td><strong>Lắc</strong> 11,6tr · <strong>Nhẫn</strong> 10,2tr · <strong>Charm</strong> 5,9tr</td>
+                  <td class="muted">Nhẫn 10,2tr · Charm 5,9tr</td>
+                </tr>
+                <tr>
+                  <td>18/08</td>
+                  <td class="num">181,6tr</td>
+                  <td><strong>Miếng vàng</strong> 81,3tr · <strong>Lắc</strong> 34,6tr · <strong>Dây cổ</strong> 26,5tr</td>
+                  <td class="muted">Vòng 25,2tr · Nhẫn 13,9tr</td>
+                </tr>
+                <tr>
+                  <td>19/08</td>
+                  <td class="num">115,9tr</td>
+                  <td><strong>Miếng vàng</strong> 59,1tr · <strong>Dây cổ</strong> 40,6tr · <strong>Lắc</strong> 11,7tr</td>
+                  <td class="muted">Lắc 11,7tr · Charm 4,5tr</td>
+                </tr>
+                <tr>
+                  <td>20/08</td>
+                  <td class="num">19,5tr</td>
+                  <td><strong>Miếng vàng</strong> 12,2tr · <strong>Charm</strong> 7,3tr</td>
+                  <td class="muted">Miếng vàng 12,2tr · Charm 7,3tr</td>
+                </tr>
+                <tr>
+                  <td>21/08</td>
+                  <td class="num">33,7tr</td>
+                  <td><strong>Miếng vàng</strong> 15,3tr · <strong>Bông tai</strong> 13,3tr · <strong>Charm</strong> 5,1tr</td>
+                  <td class="muted">Bông tai 13,3tr · Charm 5,1tr</td>
+                </tr>
+                <tr>
+                  <td>22/08</td>
+                  <td class="num">36,4tr</td>
+                  <td><strong>Vòng</strong> 36,4tr</td>
+                  <td class="muted">Vòng 36,4tr</td>
+                </tr>
+                <tr>
+                  <td>23/08</td>
+                  <td class="num">35,4tr</td>
+                  <td><strong>Nhẫn</strong> 19,9tr · <strong>Miếng vàng</strong> 15,4tr</td>
+                  <td class="muted">Nhẫn 19,9tr · Miếng vàng 15,4tr</td>
+                </tr>
+                <tr>
+                  <td>24/08</td>
+                  <td class="num">18,7tr</td>
+                  <td><strong>Nhẫn</strong> 12,4tr · <strong>Miếng vàng</strong> 6,3tr</td>
+                  <td class="muted">Nhẫn 12,4tr · Miếng vàng 6,3tr</td>
+                </tr>
+                <tr>
+                  <td>25/08</td>
+                  <td class="num">49,0tr</td>
+                  <td><strong>Dây cổ</strong> 17,7tr · <strong>Mặt dây</strong> 15,7tr · <strong>Miếng vàng</strong> 9,5tr</td>
+                  <td class="muted">Miếng vàng 9,5tr · Charm 6,0tr</td>
+                </tr>
+                <tr>
+                  <td>26/08</td>
+                  <td class="num">18,4tr</td>
+                  <td><strong>Miếng vàng</strong> 18,4tr</td>
+                  <td class="muted">Miếng vàng 18,4tr</td>
+                </tr>
+                <tr>
+                  <td>27/08</td>
+                  <td class="num">17,7tr</td>
+                  <td><strong>Lắc</strong> 9,8tr · <strong>Miếng vàng</strong> 7,8tr</td>
+                  <td class="muted">Lắc 9,8tr · Miếng vàng 7,8tr</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Ngày có TS 24K: Miếng vàng thường dẫn đầu do quà tặng. Ngày mạnh trang sức: Vòng, Lắc, Dây cổ, Charm nổi bật hơn.</p>
+      </div>
+
+      <div class="grid-2" style="margin-top:1rem">
+        <div class="panel">
+          <h3>Vàng tích lũy — Chủng loại bán nhiều nhất</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Chủng loại</th><th class="num">DT tích lũy</th><th class="num">SL</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Nhẫn ép vỉ Kim Gia Bảo</td><td class="num">3395,6tr</td><td class="num">169</td></tr>
+                <tr><td>KGB Hoa Sen</td><td class="num">868,7tr</td><td class="num">21</td></tr>
+                <tr><td>Miếng vàng</td><td class="num">179,9tr</td><td class="num">125</td></tr>
+                <tr><td>Trúc chữ nhật</td><td class="num">88,3tr</td><td class="num">16</td></tr>
+                <tr><td>Mai tròn</td><td class="num">73,6tr</td><td class="num">15</td></tr>
+                <tr><td>Mai chữ nhật</td><td class="num">56,1tr</td><td class="num">12</td></tr>
+                <tr><td>Tùng tròn</td><td class="num">51,0tr</td><td class="num">7</td></tr>
+                <tr><td>Tùng chữ nhật</td><td class="num">47,2tr</td><td class="num">6</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Nhận xét nhanh</h3>
+          <ul class="bullet-list">
+            <li><strong>TS 24K:</strong> Miếng vàng chiếm ~46% DT nhóm (quà tặng). Trang sức: Vòng + Dây cổ + Lắc ~36%.</li>
+            <li><strong>Ngày mạnh (07/08, 01/08):</strong> Mix Miếng vàng + trang sức CNC (Vòng, Lắc).</li>
+            <li><strong>Ngày yếu TS 24K (10/08, 25/08):</strong> Không có hoặc rất ít giao dịch trang sức 24K.</li>
+            <li><strong>Charm & Lắc:</strong> Bán đều nhiều ngày — phù hợp upsell kèm bill vàng.</li>
+            <li><strong>Chậm:</strong> Bông tai, Dây cổ không mặt — ít ngày phát sinh, AOV thấp.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top products -->
+    <section>
+      <div class="section-head">
+        <h2>Top sản phẩm & khuyến nghị</h2>
+        <span>Theo thành tiền · kỳ 01–27/08</span>
+      </div>
       <div class="grid-2">
-        <div>
-          <h3>Điểm mạnh</h3>
-          <ul class="rec-list">
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> CR 30,87% — tốt cho ngành vàng</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> DT ~1,49 tỷ / 4 ngày (~373 tr/ngày)</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Vàng tích lũy KGB là động lực chính (65% DT)</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Ý Nhi & Phước dẫn đầu doanh thu</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold)">+</span> Minh Hiếu margin 11,77% — hiệu quả LN cao nhất</li>
-          </ul>
+        <div class="panel">
+          <h3>Top 10 sản phẩm theo doanh thu</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Sản phẩm</th>
+                  <th class="num">DT</th>
+                  <th class="num">SL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Nhẫn ép vỉ KGB 1 chỉ</td><td class="num">1,02 tỷ</td><td class="num">70</td></tr>
+                <tr><td>2</td><td>Nhẫn ép vỉ KGB 2 chỉ</td><td class="num">726 tr</td><td class="num">25</td></tr>
+                <tr><td>3</td><td>Nhẫn ép vỉ KGB 5 chỉ</td><td class="num">653 tr</td><td class="num">9</td></tr>
+                <tr><td>4</td><td>Nhẫn ép vỉ KGB 3 chỉ</td><td class="num">436 tr</td><td class="num">10</td></tr>
+                <tr><td>5</td><td>Đồng xu KGB Hoa Sen 5 chỉ</td><td class="num">364 tr</td><td class="num">5</td></tr>
+                <tr><td>6</td><td>Đồng xu KGB Hoa Sen 10 chỉ</td><td class="num">293 tr</td><td class="num">2</td></tr>
+                <tr><td>7</td><td>Nhẫn ép vỉ KGB 10 chỉ</td><td class="num">288 tr</td><td class="num">2</td></tr>
+                <tr><td>8</td><td>Nhẫn ép vỉ KGB 0,5 chỉ</td><td class="num">247 tr</td><td class="num">34</td></tr>
+                <tr><td>9</td><td>Tùng tròn 1 chỉ</td><td class="num">159 tr</td><td class="num">11</td></tr>
+                <tr><td>10</td><td>Trúc chữ nhật 1 chỉ</td><td class="num">145 tr</td><td class="num">10</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div>
-          <h3>Hành động ưu tiên</h3>
-          <ul class="rec-list">
-            <li class="priority-high"><span class="priority-tag" style="color:var(--black)">Cao</span> Đẩy mạnh KGB + combo upsell (từ đơn 1–3 tr lên 5–10 tr)</li>
-            <li class="priority-high"><span class="priority-tag" style="color:var(--black)">Cao</span> Phân tích nguyên nhân sụt 03/08, lập kế hoạch T2–T4</li>
-            <li class="priority-mid"><span class="priority-tag" style="color:var(--gold)">TB</span> Chia sẻ kỹ năng bán của Minh Hiếu cho team</li>
-            <li class="priority-mid"><span class="priority-tag" style="color:var(--gold)">TB</span> Hỗ trợ Cẩm Tú, Thu Quanh về tư vấn & chốt đơn lớn</li>
-            <li class="priority-low"><span class="priority-tag" style="color:var(--gold-muted)">Thấp</span> Điều chỉnh bạc tích lũy nếu tiếp tục LN âm</li>
+        <div class="narrative">
+          <h3>Nhận định & hành động đề xuất</h3>
+          <ul>
+            <li><strong>Dự kiến hết tháng ~8,73 tỷ</strong> (7,60 tỷ đã có + ~1,12 tỷ từ 4 ngày còn lại theo TB 281 tr/ngày) → khoảng 43% mục tiêu 20,29 tỷ, thiếu ~11,6 tỷ. Nên reset kỳ vọng tuần 4 và tập trung maximize doanh thu thực tế + biên LN.</li>
+            <li><strong>Giữ đà KGB</strong> — đây là động lực chính (74% DT). Đảm bảo tồn kho nhẫn 1–2 chỉ và 0,5 chỉ (bán chạy theo số lượng).</li>
+            <li><strong>Đẩy Bạc TT & Trang sức khác</strong> — Bạc mới ~10% DT KH; TS khác ~38%. PC Ý 10K đã có traction; upsell từ khách mua quà tặng 24K.</li>
+            <li><strong>Cân bằng đội ngũ theo danh mục:</strong> Bình mạnh Vàng TT (89%); Phước/Ý Nhi vượt TS vàng ta; Quanh/Tú/Hiếu dưới 21% tổng DT — coaching đẩy Vàng TT & TS khác.</li>
+            <li><strong>Chuyển đổi đã tốt (30,9%)</strong> — ưu tiên tăng giá trị đơn trung bình (bán kèm charm, dây, phong thủy kèm hóa đơn vàng) thay vì chỉ tăng lượng khách.</li>
+            <li><strong>Ngày yếu:</strong> 10/08, 25/08, 12/08 — rà soát lịch ca & chiến dịch kích cầu cuối tuần/ngày lễ.</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <footer class="footer">
+      Báo cáo tự động từ data (10).xlsx + Mục tiêu TVV tháng 8/2026 MH35 · Cửa hàng MH045_KBAN · Kỳ 01–27/08/2026 · Tổng lượt khách 1.568
+    </footer>
   </div>
 
-  <footer class="footer">
-    Báo cáo tự động từ dữ liệu bán hàng · Cửa hàng MH045_KBAN · 01–04/08/2026
-  </footer>
+  <script>
+    const colors = {
+      cream: '#FEF2A0',
+      peach: '#F3CD97',
+      orange: '#E98B50',
+      brick: '#BC4F4F',
+      ink: '#3A1F1F'
+    };
 
+    Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+    Chart.defaults.color = '#6B3E3E';
+
+    // Daily
+    new Chart(document.getElementById('chartDaily'), {
+      type: 'bar',
+      data: {
+        labels: ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27'],
+        datasets: [
+          {
+            type: 'bar',
+            label: 'Doanh thu (triệu)',
+            data: [646.5,358.8,198.7,374.1,579.9,212.5,681.1,382.8,200.9,27.5,140.6,92.7,145.7,423.6,151.4,290.3,320.9,289.5,499.8,94.3,220.7,238.1,383.0,326.3,52.1,159.9,110.7],
+            backgroundColor: 'rgba(233, 139, 80, 0.75)',
+            borderRadius: 4,
+            yAxisID: 'y',
+            order: 2
+          },
+          {
+            type: 'line',
+            label: 'Số hóa đơn',
+            data: [67,59,26,32,25,16,23,21,14,4,8,10,7,9,11,21,14,18,22,8,12,11,17,10,6,8,6],
+            borderColor: colors.brick,
+            backgroundColor: colors.brick,
+            tension: 0.3,
+            pointRadius: 3,
+            yAxisID: 'y1',
+            order: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } }
+        },
+        scales: {
+          y: {
+            position: 'left',
+            title: { display: true, text: 'Triệu đồng' },
+            grid: { color: 'rgba(188,79,79,0.08)' }
+          },
+          y1: {
+            position: 'right',
+            title: { display: true, text: 'Hóa đơn' },
+            grid: { drawOnChartArea: false }
+          },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Weekly
+    new Chart(document.getElementById('chartWeekly'), {
+      type: 'bar',
+      data: {
+        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4*'],
+        datasets: [
+          {
+            label: 'Thực tế (tỷ)',
+            data: [3.64, 1.27, 2.05, 0.64],
+            backgroundColor: colors.orange,
+            borderRadius: 6
+          },
+          {
+            label: 'Kế hoạch (tỷ)',
+            data: [6.09, 5.07, 5.07, 4.06],
+            backgroundColor: colors.peach,
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } }
+        },
+        scales: {
+          y: { grid: { color: 'rgba(188,79,79,0.08)' }, title: { display: true, text: 'Tỷ đồng' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Bill distribution
+    new Chart(document.getElementById('chartBillDist'), {
+      type: 'doughnut',
+      data: {
+        labels: ['<2tr', '2–5tr', '5–10tr', '10–20tr', '20–50tr', '>50tr'],
+        datasets: [{
+          data: [78, 142, 72, 112, 47, 32],
+          backgroundColor: [
+            colors.cream,
+            colors.peach,
+            '#E8A86A',
+            colors.orange,
+            '#D4654A',
+            colors.brick
+          ],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, usePointStyle: true, font: { size: 11 } } }
+        },
+        cutout: '55%'
+      }
+    });
+
+    // Category
+    new Chart(document.getElementById('chartCategory'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Vàng TT', 'TS vàng ta', 'Trang sức khác', 'Bạc TT'],
+        datasets: [{
+          data: [74.3, 20.9, 4.4, 0.4],
+          backgroundColor: [
+            colors.brick,
+            colors.orange,
+            '#E8A86A',
+            colors.peach
+          ],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, usePointStyle: true, font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` ${ctx.label}: ${ctx.raw}%`
+            }
+          }
+        },
+        cutout: '52%'
+      }
+    });
+
+    // Staff
+    new Chart(document.getElementById('chartStaff'), {
+      type: 'bar',
+      data: {
+        labels: ['Thái Bình', 'Ý Nhi', 'Ngọc Phước', 'Cẩm Tú', 'Minh Hiếu', 'Thu Quanh'],
+        datasets: [
+          {
+            label: 'Tỷ trọng thực tế (%)',
+            data: [37.3, 22.1, 18.4, 9.1, 8.6, 4.5],
+            backgroundColor: colors.brick,
+            borderRadius: 6
+          },
+          {
+            label: 'Tỷ trọng KH (%)',
+            data: [16.4, 18.02, 16.4, 16.4, 16.4, 16.4],
+            backgroundColor: colors.peach,
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(188,79,79,0.08)' },
+            title: { display: true, text: '%' }
+          },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
