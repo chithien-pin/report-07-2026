@@ -461,8 +461,13 @@
       .wrap { padding: 1rem 0.75rem 2.5rem; }
     }
 
-    .daily-table table { font-size: 0.82rem; }
-    .daily-table td { vertical-align: top; }
+    
+    .cat-block {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-block:last-child { border-bottom: none; padding-bottom: 0; }
     .bullet-list {
       padding-left: 1.15rem;
       display: flex;
@@ -1315,18 +1320,18 @@
     </section>
 
 
-
-    <!-- Product performance -->
+    <!-- Daily product performance -->
     <section>
       <div class="section-head">
-        <h2>Hàng bán chạy & bán chậm</h2>
-        <span>Phân tích theo chủng loại gốc · TS 24K, Vàng tích lũy</span>
+        <h2>Cơ cấu sản phẩm theo danh mục</h2>
+        <span>Theo danh mục MH35 · TS 24K · TS khác · Vàng TT · Bạc TT</span>
       </div>
 
+      <div class="cat-block">
       <div class="grid-2" style="margin-bottom:1rem">
         <div class="panel">
-          <h3>TS 24K — Tất cả chủng loại (cả kỳ)</h3>
-          <p class="note" style="margin-bottom:0.75rem">Gồm dòng Quà tặng 24K, CNC, PT, 3D, CN. Mỗi chủng loại hiển thị riêng, không gom.</p>
+          <h3>TS 24K — Cơ cấu chủng loại (cả kỳ)</h3>
+          <p class="note" style="margin-bottom:0.75rem">Gom CNC, PT, 3D, CN, Quà tặng 24K. Nhóm: Dây, Vòng, Lắc, Nhẫn, Charm, Miếng vàng…</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1345,74 +1350,56 @@
                   <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>★ Vòng tay</td>
-                  <td class="num">228,3tr</td>
-                  <td class="num">6</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:50%"></span></div></td>
+                  <td>★ Vòng</td>
+                  <td class="num">287,9tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:63%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>★ Dây cổ liền mặt</td>
-                  <td class="num">214,9tr</td>
-                  <td class="num">8</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:47%"></span></div></td>
+                  <td>★ Dây cổ</td>
+                  <td class="num">227,8tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:49%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Lắc tay</td>
+                  <td> Lắc</td>
                   <td class="num">154,7tr</td>
                   <td class="num">12</td>
                   <td class="bar-cell"><div class="bar"><span style="width:34%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Charm vàng</td>
+                  <td> Charm</td>
                   <td class="num">150,9tr</td>
                   <td class="num">28</td>
                   <td class="bar-cell"><div class="bar"><span style="width:33%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Kiềng có lõi xi</td>
+                  <td> Nhẫn</td>
+                  <td class="num">137,3tr</td>
+                  <td class="num">11</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:30%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Kiềng</td>
                   <td class="num">87,6tr</td>
                   <td class="num">2</td>
                   <td class="bar-cell"><div class="bar"><span style="width:19%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Nhẫn kiểu có mặt</td>
-                  <td class="num">72,2tr</td>
-                  <td class="num">5</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:16%"></span></div></td>
-                </tr>
-                <tr>
-                  <td>Nhẫn kiểu không mặt</td>
-                  <td class="num">65,1tr</td>
-                  <td class="num">6</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:14%"></span></div></td>
-                </tr>
-                <tr>
-                  <td>Vòng tay có lõi xi</td>
-                  <td class="num">59,5tr</td>
-                  <td class="num">3</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:13%"></span></div></td>
-                </tr>
-                <tr>
-                  <td>Tượng vàng</td>
+                  <td> Tượng</td>
                   <td class="num">39,9tr</td>
                   <td class="num">3</td>
                   <td class="bar-cell"><div class="bar"><span style="width:9%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Mặt dây</td>
+                  <td> Mặt dây</td>
                   <td class="num">36,6tr</td>
                   <td class="num">3</td>
                   <td class="bar-cell"><div class="bar"><span style="width:8%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Bông tai</td>
+                  <td> Bông tai</td>
                   <td class="num">13,3tr</td>
-                  <td class="num">1</td>
-                  <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
-                </tr>
-                <tr>
-                  <td>Dây cổ không mặt</td>
-                  <td class="num">12,8tr</td>
                   <td class="num">1</td>
                   <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
                 </tr>
@@ -1421,16 +1408,15 @@
           </div>
         </div>
         <div class="panel">
-          <h3>TS 24K — Chi tiết theo dòng SP</h3>
+          <h3>TS 24K — Theo dòng sản phẩm</h3>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Dòng SP</th>
-                  <th class="num">DT dòng</th>
-                  <th>Chủng loại</th>
                   <th class="num">DT</th>
-                  <th class="num">SL</th>
+                  <th>Bán chạy nhất</th>
+                  <th class="num">DT</th>
                 </tr>
               </thead>
               <tbody>
@@ -1439,187 +1425,269 @@
                   <td class="num">500,3tr</td>
                   <td>Miếng vàng</td>
                   <td class="num">460,4tr</td>
-                  <td class="num">148</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Tượng vàng</td>
-                  <td class="num">39,9tr</td>
-                  <td class="num">3</td>
                 </tr>
                 <tr>
                   <td>CNC</td>
-                  <td class="num">496,8tr</td>
+                  <td class="num">469,3tr</td>
                   <td>Vòng tay</td>
                   <td class="num">139,5tr</td>
-                  <td class="num">4</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Lắc tay</td>
-                  <td class="num">130,9tr</td>
-                  <td class="num">11</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Dây cổ liền mặt</td>
-                  <td class="num">127,5tr</td>
-                  <td class="num">7</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Nhẫn kiểu không mặt</td>
-                  <td class="num">49,3tr</td>
-                  <td class="num">5</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Nhẫn kiểu có mặt</td>
-                  <td class="num">22,1tr</td>
-                  <td class="num">2</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Mặt dây</td>
-                  <td class="num">14,3tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Bông tai</td>
-                  <td class="num">13,3tr</td>
-                  <td class="num">1</td>
                 </tr>
                 <tr>
                   <td>PT</td>
                   <td class="num">235,8tr</td>
                   <td>Kiềng có lõi xi</td>
                   <td class="num">87,6tr</td>
-                  <td class="num">2</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Vòng tay</td>
-                  <td class="num">73,7tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Vòng tay có lõi xi</td>
-                  <td class="num">59,5tr</td>
-                  <td class="num">3</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Nhẫn kiểu có mặt</td>
-                  <td class="num">14,9tr</td>
-                  <td class="num">1</td>
                 </tr>
                 <tr>
                   <td>3D</td>
                   <td class="num">197,0tr</td>
                   <td>Charm vàng</td>
                   <td class="num">150,9tr</td>
-                  <td class="num">28</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Lắc tay</td>
-                  <td class="num">23,8tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Mặt dây</td>
-                  <td class="num">22,3tr</td>
-                  <td class="num">2</td>
                 </tr>
                 <tr>
                   <td>CN</td>
                   <td class="num">166,4tr</td>
                   <td>Dây cổ liền mặt</td>
                   <td class="num">87,5tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Nhẫn kiểu có mặt</td>
-                  <td class="num">35,2tr</td>
-                  <td class="num">2</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Nhẫn kiểu không mặt</td>
-                  <td class="num">15,8tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Vòng tay</td>
-                  <td class="num">15,1tr</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="num"></td>
-                  <td>Dây cổ không mặt</td>
-                  <td class="num">12,8tr</td>
-                  <td class="num">1</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="note">Mỗi dòng SP liệt kê đầy đủ các chủng loại bán được trong kỳ.</p>
+          <p class="note">Quà tặng 24K chủ yếu Miếng vàng. CNC mạnh Vòng/Lắc/Dây cổ. 3D dẫn đầu Charm.</p>
         </div>
       </div>
 
-      <div class="grid-2">
-        <div class="panel">
-          <h3>Vàng tích lũy — Chủng loại</h3>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Chủng loại</th><th class="num">Doanh thu</th><th class="num">SL</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Nhẫn ép vỉ Kim Gia Bảo</td><td class="num">3395,6tr</td><td class="num">169</td></tr>
-                <tr><td>KGB Hoa Sen</td><td class="num">890,0tr</td><td class="num">23</td></tr>
-                <tr><td>Miếng vàng</td><td class="num">231,3tr</td><td class="num">161</td></tr>
-                <tr><td>Trúc chữ nhật</td><td class="num">183,6tr</td><td class="num">37</td></tr>
-                <tr><td>Tùng tròn</td><td class="num">181,4tr</td><td class="num">26</td></tr>
-                <tr><td>Mai chữ nhật</td><td class="num">171,8tr</td><td class="num">38</td></tr>
-                <tr><td>Mai tròn</td><td class="num">153,9tr</td><td class="num">34</td></tr>
-                <tr><td>Tùng chữ nhật</td><td class="num">141,5tr</td><td class="num">35</td></tr>
-                <tr><td>Trúc tròn</td><td class="num">109,5tr</td><td class="num">22</td></tr>
-                <tr><td>Cúc chữ nhật</td><td class="num">92,5tr</td><td class="num">28</td></tr>
-              </tbody>
-            </table>
+      </div>
+
+<div class="cat-block">
+        <div class="grid-2" style="margin-bottom:1rem">
+          <div class="panel">
+            <h3>TS khác — Cơ cấu chủng loại (cả kỳ)</h3>
+            <p class="note" style="margin-bottom:0.75rem">Gom TS vàng tây + BST + Hỗn hợp. Nhóm: Nhẫn, Lắc, Dây cổ, Bông tai, Phong thủy…</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Chủng loại</th><th class="num">Doanh thu</th><th class="num">SL</th><th></th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>★ Nhẫn</td>
+                  <td class="num">108,9tr</td>
+                  <td class="num">22</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ Lắc</td>
+                  <td class="num">73,7tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:67%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ Dây cổ</td>
+                  <td class="num">68,2tr</td>
+                  <td class="num">10</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:62%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Bông tai</td>
+                  <td class="num">37,8tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:34%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Nhẫn cưới</td>
+                  <td class="num">36,8tr</td>
+                  <td class="num">3</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:33%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Phong thủy</td>
+                  <td class="num">4,5tr</td>
+                  <td class="num">23</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:4%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Mặt dây</td>
+                  <td class="num">4,4tr</td>
+                  <td class="num">2</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:4%"></span></div></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>TS khác — Theo dòng sản phẩm</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Dòng SP</th><th class="num">DT</th><th>Bán chạy nhất</th><th class="num">DT</th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>PC Ý 10K</td>
+                  <td class="num">140,1tr</td>
+                  <td>Nhẫn kiểu có mặt</td>
+                  <td class="num">56,6tr</td>
+                </tr>
+                <tr>
+                  <td>PC Ý 18K</td>
+                  <td class="num">85,4tr</td>
+                  <td>Lắc tay</td>
+                  <td class="num">38,2tr</td>
+                </tr>
+                <tr>
+                  <td>PC Hàn Quốc</td>
+                  <td class="num">40,3tr</td>
+                  <td>Lắc tay</td>
+                  <td class="num">12,7tr</td>
+                </tr>
+                <tr>
+                  <td>Nhẫn Cưới</td>
+                  <td class="num">36,8tr</td>
+                  <td>Nhẫn cưới công nghệ</td>
+                  <td class="num">36,8tr</td>
+                </tr>
+                <tr>
+                  <td>BST</td>
+                  <td class="num">24,8tr</td>
+                  <td>Dây cổ liền mặt</td>
+                  <td class="num">18,3tr</td>
+                </tr>
+                <tr>
+                  <td>Phong Thủy</td>
+                  <td class="num">4,5tr</td>
+                  <td>Dây đá đeo tay</td>
+                  <td class="num">3,0tr</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <div class="panel">
-          <h3>Nhận xét nhanh</h3>
-          <ul class="bullet-list">
-            <li><strong>Bán chạy TS 24K:</strong> Miếng vàng (460tr), Vòng tay (228tr), Dây cổ liền mặt (215tr), Lắc tay (155tr), Charm vàng (151tr).</li>
-            <li><strong>Bán chậm TS 24K:</strong> Bông tai (13tr), Dây cổ không mặt (13tr), Mặt dây (37tr), Tượng vàng (40tr).</li>
-            <li><strong>CNC:</strong> Vòng tay, Lắc tay, Dây cổ liền mặt đều trên 127tr — dòng trang sức mạnh nhất.</li>
-            <li><strong>Quà tặng 24K:</strong> Gần như toàn Miếng vàng (92% DT dòng).</li>
-            <li><strong>3D:</strong> Charm vàng chiếm 77% DT dòng — upsell tốt kèm bill vàng.</li>
-          </ul>
+      </div>
+<div class="cat-block">
+        <div class="grid-2" style="margin-bottom:1rem">
+          <div class="panel">
+            <h3>Vàng tích lũy (KGB) — Cơ cấu chủng loại (cả kỳ)</h3>
+            <p class="note" style="margin-bottom:0.75rem">Chủng loại theo Excel. Nhẫn ép vỉ KGB chiếm đa số doanh thu.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Chủng loại</th><th class="num">Doanh thu</th><th class="num">SL</th><th></th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>★ Nhẫn ép vỉ Kim Gia Bảo</td>
+                  <td class="num">3,40 tỷ</td>
+                  <td class="num">169</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ KGB Hoa Sen</td>
+                  <td class="num">890,0tr</td>
+                  <td class="num">23</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:26%"></span></div></td>
+                </tr>
+                <tr>
+                  <td>★ Miếng vàng</td>
+                  <td class="num">231,3tr</td>
+                  <td class="num">161</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:6%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Trúc chữ nhật</td>
+                  <td class="num">183,6tr</td>
+                  <td class="num">37</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:5%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Tùng tròn</td>
+                  <td class="num">181,4tr</td>
+                  <td class="num">26</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:5%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Mai chữ nhật</td>
+                  <td class="num">171,8tr</td>
+                  <td class="num">38</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:5%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Mai tròn</td>
+                  <td class="num">153,9tr</td>
+                  <td class="num">34</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:4%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Tùng chữ nhật</td>
+                  <td class="num">141,5tr</td>
+                  <td class="num">35</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:4%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Trúc tròn</td>
+                  <td class="num">109,5tr</td>
+                  <td class="num">22</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
+                </tr>
+                <tr>
+                  <td> Cúc chữ nhật</td>
+                  <td class="num">92,5tr</td>
+                  <td class="num">28</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:2%"></span></div></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Vàng tích lũy (KGB) — Theo dòng sản phẩm</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Dòng SP</th><th class="num">DT</th><th>Bán chạy nhất</th><th class="num">DT</th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>KGB</td>
+                  <td class="num">5,64 tỷ</td>
+                  <td>Nhẫn ép vỉ Kim Gia Bảo</td>
+                  <td class="num">3,40 tỷ</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="cat-block">
+        <div class="grid-2" style="margin-bottom:1rem">
+          <div class="panel">
+            <h3>Bạc tích lũy — Cơ cấu chủng loại (cả kỳ)</h3>
+            <p class="note" style="margin-bottom:0.75rem">Ngân Gia Bảo Tứ Quý — danh mục mỏng, 9 chỉ / 29 tr cả kỳ.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Chủng loại</th><th class="num">Doanh thu</th><th class="num">SL</th><th></th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>★ Ngân Gia Bảo Tứ Quý</td>
+                  <td class="num">29,0tr</td>
+                  <td class="num">9</td>
+                  <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Bạc tích lũy — Theo dòng sản phẩm</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Dòng SP</th><th class="num">DT</th><th>Bán chạy nhất</th><th class="num">DT</th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>Bạc tích lũy</td>
+                  <td class="num">29,0tr</td>
+                  <td>Ngân Gia Bảo Tứ Quý</td>
+                  <td class="num">29,0tr</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </section>
